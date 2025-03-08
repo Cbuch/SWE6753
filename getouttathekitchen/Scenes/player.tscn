@@ -18,7 +18,9 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Player" type="Area2D"]
+position = Vector2(210, 111)
 script = ExtResource("1_cbhve")
+_stat_player_amount = 10
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
