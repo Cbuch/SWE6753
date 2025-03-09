@@ -17,7 +17,8 @@ func _toggle_pause() -> void:
 
 func _on_resume_pressed() -> void:
 	print("Resume pressed")
-	_toggle_pause()  
+	get_tree().paused = false 
+	visible = false
 
 func _on_quit_to_main_menu_pressed() -> void:
 	print("Quit to Main Menu pressed")

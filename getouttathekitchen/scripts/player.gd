@@ -68,3 +68,14 @@ func _pass_down_stats() ->void:
 	print_debug("working?")
 	for i in range(_current_weapons.size()):
 		_current_weapons[i].update_player_stats(stats_array)
+
+var paused = false
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		_toggle_pause()
+
+func _toggle_pause() -> void:
+	paused = !paused
+	get_tree().paused = paused
+	get_parent().get_node("PauseMenu").visible = paused  # Show/hide the pause menu
