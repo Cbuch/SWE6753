@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://2qbbm2g2j5o"]
+[gd_scene load_steps=8 format=4 uid="uid://coakxv3rr60am"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
-[ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://player.tscn" id="2_hbghi"]
+[ext_resource type="PackedScene" uid="uid://bfk3o0n0ju4tn" path="res://player.tscn" id="2_hbghi"]
+[ext_resource type="PackedScene" uid="uid://ctd8ortrxwjdx" path="res://Menus/MenuScenes/PauseMenu.tscn" id="3_4k3ip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("1_hbghi")
@@ -127,3 +128,12 @@ tile_set = SubResource("TileSet_ihfcg")
 position = Vector2(2997, 1551)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("3_4k3ip")]
+layout_mode = 1
