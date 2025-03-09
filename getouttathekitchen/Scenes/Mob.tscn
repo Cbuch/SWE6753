@@ -130,16 +130,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbji"]
 size = Vector2(54, 51)
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="RigidBody2D" type="CharacterBody2D" groups=["mobs"]]
+top_level = true
+texture_filter = 1
+collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_4rnky")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v40e")
-animation = &"meat"
-frame_progress = 0.069463
+animation = &"carb"
+frame_progress = 0.179195
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_7xbji")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

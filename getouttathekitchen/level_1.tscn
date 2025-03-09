@@ -1,7 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://mqhe484f3sjd"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
-[ext_resource type="PackedScene" path="res://player.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://ctd8ortrxwjdx" path="res://Menus/MenuScenes/PauseMenu.tscn" id="3_4k3ip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
@@ -112,6 +111,9 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hbghi")
 
+[sub_resource type="Resource" id="Resource_hbghi"]
+metadata/__load_path__ = "res://player.tscn"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Ground" type="TileMapLayer" parent="."]
@@ -124,7 +126,7 @@ texture_filter = 1
 tile_map_data = PackedByteArray("AAAEABsAAAAAAAsAAFADABUAAAADAAgAAGANAB0AAAADAAgAAAAIABIAAAAAAAgAAAAJAB0AAAAAAAgAAFAEAAsAAAAGAAsAAAAHAAIAAAAGAAgAAAATAAYAAAAGAAgAAAAOAAMAAAAJAAgAAAAaAAMAAAAMAAsAAAAgAAEAAAAMAAgAAFAqAAYAAAAMAAgAAAAcAAkAAAAPAAgAADAzAAIAAAAFAAMAAABGAAgAAAAFAAMAADA3AAYAAAAIAAAAAABHAAIAAAAIAAAAADA8AAMAAAAFAAAAAABJAAwAAAAFAAAAAABRAAQAAAARAAMAAABeAA8AAAARAAMAAGBXAAMAAAARAAAAAABXAAIAAAARAAAAAABXAAEAAAARAAAAAABeAAQAAAARAAAAAABcAAMAAAARAAAAAABdAAIAAAARAAAAAABfAAsAAAARAAAAAABeAAgAAAAUAAAAAABNAB0AAAALAAMAAABTAB0AAAAOAAAAAABVABMAAAAOAAAAAABZAB4AAAALAAAAAABeABUAAAALAAAAAABfAB4AAAALAAAAAAAXAB0AAAALAAAAAABAAA0AAAALAAAAAAAeABwAAAAUAAAAAAAbABEAAAAIAAAAAAA1AA0AAAAAAAgAAAAqAAUAAAAMAAgAAAAdAAUAAAAMAAgAAAACAAYAAAAJAAgAAAATAB0AAAAAAAgAAAAtAAIAAAAPAAgAAABeABkAAAALAAMAAAA=")
 tile_set = SubResource("TileSet_ihfcg")
 
-[node name="Player" parent="." instance=ExtResource("2_hbghi")]
+[node name="Player" parent="."]
 position = Vector2(2997, 1551)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
