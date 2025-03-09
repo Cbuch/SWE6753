@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://2qbbm2g2j5o"]
+[gd_scene load_steps=14 format=4 uid="uid://2qbbm2g2j5o"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
+[ext_resource type="Script" uid="uid://63bg4suaudh3" path="res://scripts/level_1.gd" id="1_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_7p6j4"]
 [ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://Scenes/player.tscn" id="2_hbghi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
@@ -126,7 +128,15 @@ height = 434.258
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbghi"]
 radius = 6.91596
 
+[sub_resource type="Curve2D" id="Curve2D_6444e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -706, -448, 0, 0, 0, 0, 720, -459, 0, 0, 0, 0, 735, 420, 0, 0, 0, 0, -741, 430, 0, 0, 0, 0, -704, -443, 0, 0, 0, 0, -706, -448)
+}
+point_count = 6
+
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_xfk5q")
+mob_scene = ExtResource("2_7p6j4")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -240,9 +250,21 @@ rotation = -0.753299
 scale = Vector2(-18.5615, -18.5615)
 shape = SubResource("CircleShape2D_hbghi")
 
+[node name="mobtimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [node name="Player" parent="." instance=ExtResource("2_hbghi")]
 position = Vector2(2760, 1327)
 collision_layer = 1
 collision_mask = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="MobPath" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_6444e")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="Player/MobPath"]
+position = Vector2(-706, -448)
+rotation = -0.00771373
+
+[connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
