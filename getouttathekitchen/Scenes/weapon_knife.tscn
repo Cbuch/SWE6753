@@ -4,12 +4,16 @@
 [ext_resource type="Script" path="res://scripts/make_circle.gd" id="2_jixvx"]
 [ext_resource type="PackedScene" uid="uid://c1myfoskhcb0x" path="res://Scenes/projectile_knife.tscn" id="3_3516u"]
 
-[node name="Weapon_Knife" type="Node2D" node_paths=PackedStringArray("knives")]
-position = Vector2(308, 175)
+[node name="Weapon_Knife" type="Node2D" node_paths=PackedStringArray("projectile_list")]
+rotation = 1.5708
 script = ExtResource("1_wbum0")
-knives = [NodePath("projectile_knife")]
+projectile_list = [NodePath("projectile_knife")]
 
 [node name="weaponCD" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="weaponDuration" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="WeaponCircle" type="Path2D" parent="."]
 rotation = 1.5708
@@ -18,3 +22,6 @@ script = ExtResource("2_jixvx")
 [node name="CircleFollow" type="PathFollow2D" parent="WeaponCircle"]
 
 [node name="projectile_knife" parent="." instance=ExtResource("3_3516u")]
+
+[connection signal="timeout" from="weaponCD" to="." method="_on_weapon_cd_timeout"]
+[connection signal="timeout" from="weaponDuration" to="." method="_on_weapon_duration_timeout"]

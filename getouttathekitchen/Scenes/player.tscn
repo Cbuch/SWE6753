@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cooxepxr1yigu"]
+[gd_scene load_steps=6 format=3 uid="uid://cooxepxr1yigu"]
 
 [ext_resource type="Texture2D" uid="uid://dqhg7bakub8nx" path="res://art/PlayerSprite.png" id="1_5nd0v"]
-[ext_resource type="Script" uid="uid://bg1h2awji1p48" path="res://scripts/player.gd" id="1_cbhve"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_cbhve"]
+[ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/weapon_knife.tscn" id="3_3ll3d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t2ujn"]
 animations = [{
@@ -17,10 +18,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_von0d"]
 size = Vector2(32, 32)
 
-[node name="Player" type="Area2D"]
-position = Vector2(210, 111)
+[node name="Player" type="Area2D" node_paths=PackedStringArray("_current_weapons")]
 script = ExtResource("1_cbhve")
-_stat_player_amount = 10
+_stat_player_amount = 100.0
+_current_weapons = [NodePath("Weapon_Knife")]
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -28,5 +29,7 @@ sprite_frames = SubResource("SpriteFrames_t2ujn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_von0d")
+
+[node name="Weapon_Knife" parent="." instance=ExtResource("3_3ll3d")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
