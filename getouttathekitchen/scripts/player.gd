@@ -1,8 +1,9 @@
-extends Area2D
+extends CharacterBody2D
 
 signal hit
 
 @export var speed = 400
+@export var rotation_speed = 1.5  # turning speed in radians/sec
 var screen_size
 #stats for player
 @export var _stat_health = 100
@@ -30,22 +31,28 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_up"):
-		velocity.y -=1
-	if Input.is_action_pressed("move_down"):
-		velocity.y +=1
 	if Input.is_action_pressed("move_left"):
 		velocity.x -=1
+		$AnimatedSprite2D.animation = "left"
 	if Input.is_action_pressed("move_right"):
 		velocity.x +=1
-		
+		$AnimatedSprite2D.animation = "right"
+	if Input.is_action_pressed("move_up"):
+		velocity.y -=1
+		$AnimatedSprite2D.animation = "up"
+	if Input.is_action_pressed("move_down"):
+		velocity.y +=1
+		$AnimatedSprite2D.animation = "down"
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
+		move_and_slide()
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop()
-	
+		
+
 	position += velocity * delta
 	#position = position.clamp(Vector2.ZERO, screen_size)
 
@@ -53,12 +60,6 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-
-func _on_body_entered(body: Node2D) -> void:
-	pass
-	#hide ()
-	#hit.emit()
-	#$CollisionShape2D.set_deferred("disabled", true)
 
 func upgrade_stat(type: int,amount: float) -> void:
 	#amount should be some amount  < 1 typically
@@ -68,3 +69,9 @@ func _pass_down_stats() ->void:
 	print_debug("working?")
 	for i in range(_current_weapons.size()):
 		_current_weapons[i].update_player_stats(stats_array)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass
+	#hide ()
+	#hit.emit()
+	#$CollisionShape2D.set_deferred("disabled", true)
