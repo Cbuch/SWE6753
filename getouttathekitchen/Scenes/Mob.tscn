@@ -1,0 +1,145 @@
+[gd_scene load_steps=27 format=3 uid="uid://csvaqup5wtyww"]
+
+[ext_resource type="Script" uid="uid://bax8y75or1yw" path="res://scripts/mob.gd" id="1_4rnky"]
+[ext_resource type="Texture2D" uid="uid://5ftrc0iw518k" path="res://art/enemy_sprites/carb_1.png" id="2_qw4th"]
+[ext_resource type="Texture2D" uid="uid://qjuv8clobpes" path="res://art/enemy_sprites/carb_2.png" id="3_r1x8t"]
+[ext_resource type="Texture2D" uid="uid://y5b0mblp8v7n" path="res://art/enemy_sprites/carb_3.png" id="4_dgvvo"]
+[ext_resource type="Texture2D" uid="uid://dgjc62uoeumvs" path="res://art/enemy_sprites/dairy_1.png" id="5_anh5k"]
+[ext_resource type="Texture2D" uid="uid://cr5bfe5xu5jqa" path="res://art/enemy_sprites/dairy_2.png" id="6_mwr6g"]
+[ext_resource type="Texture2D" uid="uid://4nn1litjawf6" path="res://art/enemy_sprites/dairy_3.png" id="7_v7mro"]
+[ext_resource type="Texture2D" uid="uid://bk6edgkidrbkh" path="res://art/enemy_sprites/fruitenemy_1.png" id="8_3ohxx"]
+[ext_resource type="Texture2D" uid="uid://c5wwg8lie7q2u" path="res://art/enemy_sprites/fruitenemy_2.png" id="9_cx1et"]
+[ext_resource type="Texture2D" uid="uid://b3ug70fivtar8" path="res://art/enemy_sprites/fruitenemy_3.png" id="10_x8714"]
+[ext_resource type="Texture2D" uid="uid://basjv7212m8x0" path="res://art/enemy_sprites/fruitenemy_4.png" id="11_8io2x"]
+[ext_resource type="Texture2D" uid="uid://c2ehif35hn26s" path="res://art/enemy_sprites/meat_1.png" id="12_pyb4q"]
+[ext_resource type="Texture2D" uid="uid://dr588b2ng7mnd" path="res://art/enemy_sprites/meat_8.png" id="13_o4pko"]
+[ext_resource type="Texture2D" uid="uid://bsp2pyvvtj6ds" path="res://art/enemy_sprites/meat_7.png" id="14_lkdvt"]
+[ext_resource type="Texture2D" uid="uid://38ubdpi2kbw2" path="res://art/enemy_sprites/meat_6.png" id="15_knshd"]
+[ext_resource type="Texture2D" uid="uid://3tt1u7n6m26y" path="res://art/enemy_sprites/meat_5.png" id="16_580j6"]
+[ext_resource type="Texture2D" uid="uid://bgk5suspflil4" path="res://art/enemy_sprites/meat_4.png" id="17_br7vd"]
+[ext_resource type="Texture2D" uid="uid://d0ors40c86sgr" path="res://art/enemy_sprites/meat_3.png" id="18_5vagp"]
+[ext_resource type="Texture2D" uid="uid://kur2755hswb5" path="res://art/enemy_sprites/meat_2.png" id="19_3woek"]
+[ext_resource type="Texture2D" uid="uid://6o5kiv8dab8c" path="res://art/enemy_sprites/sugar_1.png" id="20_s0yl2"]
+[ext_resource type="Texture2D" uid="uid://cilfbt16eydh1" path="res://art/enemy_sprites/veg_1.png" id="21_0pmeg"]
+[ext_resource type="Texture2D" uid="uid://segno57f220q" path="res://art/enemy_sprites/veg_2.png" id="22_v50v8"]
+[ext_resource type="Texture2D" uid="uid://bcp152sln2cye" path="res://art/enemy_sprites/veg_3.png" id="23_eju8k"]
+[ext_resource type="Texture2D" uid="uid://obqu5wx5cgeo" path="res://art/enemy_sprites/veg_4.png" id="24_i76ya"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v40e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qw4th")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r1x8t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dgvvo")
+}],
+"loop": true,
+"name": &"carb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_anh5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mwr6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_v7mro")
+}],
+"loop": true,
+"name": &"dairy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3ohxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cx1et")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_x8714")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8io2x")
+}],
+"loop": true,
+"name": &"fruit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_pyb4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_o4pko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lkdvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_knshd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_580j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_br7vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5vagp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_3woek")
+}],
+"loop": true,
+"name": &"meat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_s0yl2")
+}],
+"loop": true,
+"name": &"sugar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_0pmeg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_v50v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_eju8k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_i76ya")
+}],
+"loop": true,
+"name": &"veg",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbji"]
+size = Vector2(54, 51)
+
+[node name="RigidBody2D" type="RigidBody2D"]
+collision_mask = 0
+script = ExtResource("1_4rnky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6v40e")
+animation = &"meat"
+frame_progress = 0.069463
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1.5)
+shape = SubResource("RectangleShape2D_7xbji")

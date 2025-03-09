@@ -55,9 +55,10 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func _on_body_entered(body: Node2D) -> void:
-	hide ()
-	hit.emit()
-	$CollisionShape2D.set_deferred("disabled", true)
+	pass
+	#hide ()
+	#hit.emit()
+	#$CollisionShape2D.set_deferred("disabled", true)
 
 func upgrade_stat(type: int,amount: float) -> void:
 	#amount should be some amount  < 1 typically
