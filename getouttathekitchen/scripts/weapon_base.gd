@@ -7,21 +7,22 @@ class_name WeaponBase
 #make any irrelevant stat <= 0
 @export var _stat_weapon_amount = 1		#0
 @export var _stat_weapon_cd = 1			#1
-@export var _stat_weapon_duration = 1	#2
-@export var _stat_weapon_pierce = 1		#3
-@export var _stat_weapon_size = 1		#4
-@export var _stat_weapon_speed = 1		#5  remember to scale any animation speed with this
+@export var _stat_weapon_damage = 1		#2
+@export var _stat_weapon_duration = 1	#3
+@export var _stat_weapon_pierce = 1		#4
+@export var _stat_weapon_size = 1		#5
+@export var _stat_weapon_speed = 1		#6  remember to scale any animation speed with this
 
-var player_stats: Array[float] = [1,1,1,1,1,1]
+var player_stats: Array[float] = [1,1,1,1,1,1,1]
 
-var weapon_stats: Array[float] = [1,1,1,1,1,1]
+var weapon_stats: Array[float] = [1,1,1,1,1,1.1]
 
-@export var adjusted_stats: Array[float] = [0,0,0,0,0,0]
+@export var adjusted_stats: Array[float] = [0,0,0,0,0,0,0]
 
 @export var projectile_list: Array[Node2D] = []
 
 func _ready() -> void:
-	weapon_stats = [_stat_weapon_amount, _stat_weapon_cd, _stat_weapon_duration, _stat_weapon_pierce, _stat_weapon_size, _stat_weapon_speed]
+	weapon_stats = [_stat_weapon_amount, _stat_weapon_cd,_stat_weapon_damage, _stat_weapon_duration, _stat_weapon_pierce, _stat_weapon_size, _stat_weapon_speed]
 	
 	#all weapons should have a timer attached to them to make their attacks work if cd > 0
 	if (_stat_weapon_cd > 0):
