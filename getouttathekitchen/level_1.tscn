@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://mqhe484f3sjd"]
+[gd_scene load_steps=7 format=4 uid="uid://mqhe484f3sjd"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://ctd8ortrxwjdx" path="res://Menus/MenuScenes/PauseMenu.tscn" id="3_4k3ip"]
@@ -110,9 +110,6 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_ihfcg"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hbghi")
-
-[sub_resource type="Resource" id="Resource_hbghi"]
-metadata/__load_path__ = "res://player.tscn"
 
 [node name="Node2D" type="Node2D"]
 

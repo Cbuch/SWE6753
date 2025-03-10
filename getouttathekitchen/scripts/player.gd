@@ -21,10 +21,12 @@ var screen_size
 @export var _stat_player_speed: float = 0		#6
 
 var stats_array: Array[float] = []
+var health = _stat_health
 #where the weapons should be stored
 @export var _current_weapons: Array [Node]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	healthbar_update(health)
 	stats_array = [_stat_player_amount, _stat_player_cd,_stat_player_damage, _stat_player_duration, _stat_player_pierce, _stat_player_size, _stat_player_speed]
 	screen_size = get_viewport_rect().size
 	
@@ -73,6 +75,14 @@ func _pass_down_stats() ->void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("mobs")):
-		hide ()
-		hit.emit()
-		$CollisionShape2D.set_deferred("disabled", true)
+		var damage = body.damage
+		if (health - damage > 0):
+			health -= damage
+			healthbar_update(health)
+		else:
+			hide ()
+			hit.emit()
+			$CollisionShape2D.set_deferred("disabled", true)
+
+func healthbar_update(health):
+	$HealthBar.value = health

@@ -4,7 +4,9 @@ extends CharacterBody2D
 @export var health = 100
 
 var typing = "blank"
-const SPEED = 350
+const SPEED = 300
+
+var damage = 25
 
 func _ready():
 	healthbar_setup()
@@ -28,8 +30,10 @@ func die():
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
-		
-		die()
+		health = health - area.get_parent().weapondamage
+		health_update()
+		if health <= 0:
+			die()
 
 func animtype(input: StringName):
 	typing = input

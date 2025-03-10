@@ -6,9 +6,11 @@ extends ProjectileBase
 @export var deceleration_range: float = 50.0  # Increased range
 @export var base_size: float = .35
 
-var player_scene = preload("res://scripts/player.gd").instance()
-var damage = player_scene.get_node("")
-var damage =
+#Not sure what happened here, but I'm hardcoding damage for now
+#var player_scene = load("res://Scenes/player.tscn")
+#var player_instance = player_scene.instantiate()
+#var player = player_instance.get_node("Player")
+var weapondamage = 50
 
 #stuff for flipping and such
 var going_up = true
