@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://csvaqup5wtyww"]
+[gd_scene load_steps=28 format=3 uid="uid://csvaqup5wtyww"]
 
 [ext_resource type="Script" uid="uid://bax8y75or1yw" path="res://scripts/mob.gd" id="1_4rnky"]
 [ext_resource type="Texture2D" uid="uid://5ftrc0iw518k" path="res://art/enemy_sprites/carb_1.png" id="2_qw4th"]
@@ -130,21 +130,43 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7xbji"]
 size = Vector2(54, 51)
 
-[node name="RigidBody2D" type="CharacterBody2D" groups=["mobs"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rnky"]
+size = Vector2(58, 55)
+
+[node name="Mob" type="CharacterBody2D" groups=["mobs"]]
 top_level = true
 texture_filter = 1
-collision_layer = 0
-collision_mask = 0
+collision_layer = 2
 script = ExtResource("1_4rnky")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v40e")
 animation = &"carb"
-frame_progress = 0.179195
+frame_progress = 0.430566
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_7xbji")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Collision Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Detector"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_4rnky")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 32.0
+offset_bottom = -32.0
+theme_override_font_sizes/font_size = 1
+rounded = true
+show_percentage = false
+
+[connection signal="area_entered" from="Collision Detector" to="." method="_on_collision_detector_area_entered"]
+[connection signal="body_entered" from="Collision Detector" to="." method="_on_collision_detector_body_entered"]

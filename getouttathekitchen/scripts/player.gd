@@ -12,7 +12,7 @@ var screen_size
 @export var _stat_speed = 1
 
 #stats for weapons
-@export var _stat_player_amount: float = 10		#0
+@export var _stat_player_amount: float = 3		#0
 @export var _stat_player_cd: float = 0			#1
 @export var _stat_player_damage: float = 0		#2
 @export var _stat_player_duration: float = 0	#3
@@ -72,7 +72,7 @@ func _pass_down_stats() ->void:
 		_current_weapons[i].update_player_stats(stats_array)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass
-	#hide ()
-	#hit.emit()
-	#$CollisionShape2D.set_deferred("disabled", true)
+	if(body.is_in_group("mobs")):
+		hide ()
+		hit.emit()
+		$CollisionShape2D.set_deferred("disabled", true)
