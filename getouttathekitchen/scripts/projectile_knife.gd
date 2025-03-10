@@ -6,6 +6,12 @@ extends ProjectileBase
 @export var deceleration_range: float = 50.0  # Increased range
 @export var base_size: float = .35
 
+#Not sure what happened here, but I'm hardcoding damage for now
+#var player_scene = load("res://Scenes/player.tscn")
+#var player_instance = player_scene.instantiate()
+#var player = player_instance.get_node("Player")
+var weapondamage = 50
+
 #stuff for flipping and such
 var going_up = true
 var flipped = false
@@ -46,3 +52,7 @@ func _process(delta):
 		#else:
 			#$AnimationPlayer.play("Knife_flip_up")
 		#going_up = !going_up
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
