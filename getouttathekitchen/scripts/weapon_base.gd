@@ -49,14 +49,18 @@ func update_stats(w_stats: Array[float]) -> void:
 	for i in range(w_stats.size()):  #Should be 6
 		weapon_stats[i] = w_stats[i]
 		
-func update_player_stats(p_stats: Array[float]) -> void:
 
+func update_player_stats(p_stats: Array[float]) -> void:
 	for i in range(p_stats.size()):  #Should be 6
 		player_stats[i] = p_stats[i]
 		
+
 func adjust_stats() -> void:
 	for i in range(adjusted_stats.size()):
 		adjusted_stats[i] = player_stats[i] + weapon_stats[i]
-		print_debug(adjusted_stats[i])
-		print_debug(player_stats[i])
-		print_debug(weapon_stats[i])
+	for i in range(projectile_list.size()):
+		projectile_list[i].update_projectile_stats(adjusted_stats)
+
+		#print_debug(adjusted_stats[i])
+		#print_debug(player_stats[i])
+		#print_debug(weapon_stats[i])

@@ -2,9 +2,8 @@ extends ProjectileBase
 
 @export var start_pos: Vector2
 @export var end_pos: Vector2
-@export var base_speed: float = 400.0  # Renamed from speed
 @export var deceleration_range: float = 50.0  # Increased range
-@export var base_size: float = .35
+
 
 #Not sure what happened here, but I'm hardcoding damage for now
 #var player_scene = load("res://Scenes/player.tscn")
@@ -30,9 +29,9 @@ func _process(delta):
 	var distance = position.distance_to(target)
 
 	# Slow down near the end
-	var current_speed = base_speed
+	var current_speed = speed
 	if distance < deceleration_range:
-		current_speed = lerp(0.1, base_speed, distance / deceleration_range)
+		current_speed = lerp(0.1, speed, distance / deceleration_range)
 		if (!$AnimationPlayer.is_playing() && !flipped):
 			if(going_up):
 				$AnimationPlayer.play("Knife_flip_down")

@@ -12,7 +12,7 @@ var screen_size
 @export var _stat_speed = 1
 
 #stats for weapons
-@export var _stat_player_amount: float = 3		#0
+@export var _stat_player_amount: float = 0		#0
 @export var _stat_player_cd: float = 0			#1
 @export var _stat_player_damage: float = 0		#2
 @export var _stat_player_duration: float = 0	#3
