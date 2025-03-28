@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://pdnmpfuhbo1i"]
 
-[ext_resource type="Script" path="res://scripts/weapon_knife.gd" id="1_wbum0"]
+[ext_resource type="Script" path="res://scripts/Weapons/weapon_knife.gd" id="1_wbum0"]
 [ext_resource type="Script" path="res://scripts/make_circle.gd" id="2_jixvx"]
 [ext_resource type="PackedScene" uid="uid://c1myfoskhcb0x" path="res://Scenes/projectile_knife.tscn" id="3_3516u"]
 

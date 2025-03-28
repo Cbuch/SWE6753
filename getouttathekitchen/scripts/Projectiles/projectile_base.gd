@@ -31,10 +31,3 @@ func update_projectile_stats(proj_stats: Array[float]) -> void:
 		
 		speed = proj_stats[6] * base_speed
 		$AnimationPlayer.speed_scale = proj_stats[6]
-		
-		
-		
-		
-		
-		
-		
