@@ -32,7 +32,8 @@ func _on_mobtimer_timeout() -> void:
 		mob_boost = ""
 	
 	print(mob_boost)
-	if(mob_boost != null):
+	if(mob_boost != null and mob_boost != ""):
+		print(mob_boost)
 		mob.animtype(mob_boost)
 	
 	# Set the mob's position to the random location.
@@ -41,5 +42,5 @@ func _on_mobtimer_timeout() -> void:
 	add_child(mob)
 
 
-func _on_player_hit() -> void:
-	get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+#func _on_player_hit() -> void:
+	

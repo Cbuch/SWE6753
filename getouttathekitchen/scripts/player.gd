@@ -12,7 +12,7 @@ var screen_size
 @export var _stat_speed = 1
 
 #stats for weapons
-@export var _stat_player_amount: float = 10		#0
+@export var _stat_player_amount: float = 6		#0
 @export var _stat_player_cd: float = 0			#1
 @export var _stat_player_damage: float = 0		#2
 @export var _stat_player_duration: float = 0	#3
@@ -21,10 +21,14 @@ var screen_size
 @export var _stat_player_speed: float = 0		#6
 
 var stats_array: Array[float] = []
+var health = _stat_health
+var invincible = false
+var boost = 0
 #where the weapons should be stored
-@export var _current_weapons: Array [Node]
+@export var _current_weapons: Array [WeaponBase] 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$HealthBar.value = health
 	stats_array = [_stat_player_amount, _stat_player_cd,_stat_player_damage, _stat_player_duration, _stat_player_pierce, _stat_player_size, _stat_player_speed]
 	screen_size = get_viewport_rect().size
 	
@@ -47,7 +51,7 @@ func _process(delta: float) -> void:
 		velocity.y +=1
 		$AnimatedSprite2D.animation = "down"
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * (speed + boost)
 		move_and_slide()
 		$AnimatedSprite2D.play()
 	else:
@@ -72,7 +76,23 @@ func _pass_down_stats() ->void:
 		_current_weapons[i].update_player_stats(stats_array)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass
-	#hide ()
-	#hit.emit()
-	#$CollisionShape2D.set_deferred("disabled", true)
+	if(body.is_in_group("mobs") and !invincible):
+		var damage = body.damage
+		if (health - damage > 0):
+			health -= damage
+			healthbar_update(health)
+			invincible = true
+			boost = 200
+			$damageTimer.start()
+		else:
+			hide ()
+			hit.emit()
+			$CollisionShape2D.set_deferred("disabled", true)
+			get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+
+func healthbar_update(health):
+	$HealthBar.value = health
+
+
+func _on_damage_timer_timeout() -> void:
+	invincible = false

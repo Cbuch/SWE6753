@@ -7,6 +7,7 @@ var typing = "blank"
 const SPEED = 300
 
 var damage = 25
+var knockback = 0
 
 func _ready():
 	healthbar_setup()
@@ -23,6 +24,9 @@ func _process(delta: float) -> void:
 	navigation_agent.target_position = target.global_position
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position())
 	velocity *= SPEED
+	if (knockback > 0):
+		velocity = velocity*-1
+		knockback -= 1
 	move_and_slide()
 
 func die():
@@ -34,6 +38,8 @@ func _on_collision_detector_area_entered(area: Area2D) -> void:
 		health_update()
 		if health <= 0:
 			die()
+	if area.is_in_group("player"):
+		knockback = 60
 
 func animtype(input: StringName):
 	typing = input
