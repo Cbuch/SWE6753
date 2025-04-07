@@ -20,7 +20,7 @@ func _ready():
 	if start_pos == Vector2.ZERO:
 		start_pos = position  # Default start position
 	if end_pos == Vector2.ZERO:
-		end_pos = start_pos + Vector2(150, 0)  # Moves 400 pixels right
+		end_pos = start_pos + Vector2(150, 0)  # Moves x pixels right
 
 func _process(delta):
 	var target = end_pos if moving_to_end else start_pos
