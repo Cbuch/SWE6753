@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctd8ortrxwjdx"]
+[gd_scene load_steps=9 format=3 uid="uid://ctd8ortrxwjdx"]
 
-[ext_resource type="Script" uid="uid://dg42vx3txjukt" path="res://Menus/MenuScripts/pause_menu.gd" id="1_o32pf"]
+[ext_resource type="Script" path="res://Menus/MenuScripts/pause_menu.gd" id="1_o32pf"]
 [ext_resource type="Texture2D" uid="uid://dtcwajdpfcbhl" path="res://Menus/MenuBackgrounds/PauseMenu.PNG" id="2_3feog"]
 [ext_resource type="FontFile" uid="uid://bahs2isam48vq" path="res://fonts/CormorantGaramond-VariableFont_wght.ttf" id="3_3rdy4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayxpd"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gkchj"]
 bg_color = Color(0.203922, 0.227451, 0.192157, 0.784314)
@@ -11,8 +17,22 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujodt"]
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3ma0"]
 bg_color = Color(0.203922, 0.227451, 0.192157, 0.784314)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alnja"]
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -59,15 +79,26 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3rdy4")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_ayxpd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gkchj")
-text = "~Resume~"
+text = "~Resume Game~"
 
 [node name="Quit to Main Menu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3rdy4")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_ujodt")
 theme_override_styles/normal = SubResource("StyleBoxFlat_j3ma0")
 text = "~Quit to Main Menu~"
 
+[node name="Quit to Desktop" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3rdy4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/hover = SubResource("StyleBoxFlat_alnja")
+theme_override_styles/normal = SubResource("StyleBoxFlat_j3ma0")
+text = "~Quit to Desktop~"
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit to Main Menu" to="." method="_on_quit_to_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit to Desktop" to="." method="_on_quit_to_desktop_pressed"]

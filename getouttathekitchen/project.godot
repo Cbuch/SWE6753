@@ -23,16 +23,9 @@ window/size/mode=3
 window/size/borderless=true
 window/stretch/mode="viewport"
 
-[file_customization]
-
-folder_colors={
-"res://scripts/": "blue"
-}
-
 [global_group]
 
 mobs=""
-projectile=""
 
 [input]
 

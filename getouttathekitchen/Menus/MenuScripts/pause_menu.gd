@@ -3,10 +3,10 @@ extends Control
 var paused = false
 
 func _ready() -> void:
-	pass  # Replace with function body if needed
+	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):  # Press ESC to toggle pause
+	if event.is_action_pressed("ui_cancel"):
 		_toggle_pause()
 
 func _toggle_pause() -> void:
@@ -22,4 +22,8 @@ func _on_resume_pressed() -> void:
 func _on_quit_to_main_menu_pressed() -> void:
 	print("Quit to Main Menu pressed")
 	get_tree().paused = false  
-	get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn") 
+	get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")  
+
+func _on_quit_to_desktop_pressed() -> void:
+		print("Quit to Desktop pressed")
+		get_tree().quit()
