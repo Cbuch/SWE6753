@@ -104,7 +104,7 @@ _data = {
 [node name="projectile_knife" type="Node2D"]
 scale = Vector2(0.35, 0.35)
 script = ExtResource("1_735p3")
-end_pos = Vector2(0, -150)
+end_pos = Vector2(0, -50)
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
 rotation = -3.14159

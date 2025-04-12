@@ -8,6 +8,7 @@ const SPEED = 300
 
 var damage = 25
 
+
 func _ready():
 	healthbar_setup()
 	var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
@@ -23,9 +24,11 @@ func _process(delta: float) -> void:
 	navigation_agent.target_position = target.global_position
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position())
 	velocity *= SPEED
+
 	move_and_slide()
 
 func die():
+	get_parent().lowerMobCount()
 	queue_free()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
@@ -36,8 +39,9 @@ func _on_collision_detector_area_entered(area: Area2D) -> void:
 			die()
 
 func animtype(input: StringName):
+	print(input)
 	typing = input
-	$AnimatedSprite2D.animation=input
+	$AnimatedSprite2D.set_animation(input)
 
 func healthbar_setup():
 	$HealthBar.max_value = health
