@@ -11,6 +11,8 @@ var screen_size
 @export var _stat_defense = 2
 @export var _stat_speed = 1
 
+@export var _knockback_strength = 1000
+
 #stats for weapons
 @export var _stat_player_amount: float = 6		#0
 @export var _stat_player_cd: float = 0			#1
@@ -24,11 +26,19 @@ var stats_array: Array[float] = []
 var health = _stat_health
 var invincible = false
 var boost = 0
+var boostTimeMax = 360 #adjust in increments of 120
+var boostTime = boostTimeMax 
+var damageAngle: float
+var damageLocation: Vector2
+var gotHit = false 
+var knockbacktime = 0
 #where the weapons should be stored
 @export var _current_weapons: Array [WeaponBase] 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$HealthBar.value = health
+	$BoostBar.max_value = boostTime
+	$BoostBar.value = boostTime
 	stats_array = [_stat_player_amount, _stat_player_cd,_stat_player_damage, _stat_player_duration, _stat_player_pierce, _stat_player_size, _stat_player_speed]
 	screen_size = get_viewport_rect().size
 	
@@ -37,26 +47,40 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	
 	var velocity = Vector2.ZERO
-	if Input.is_action_pressed("move_left"):
-		velocity.x -=1
-		$AnimatedSprite2D.animation = "left"
-	if Input.is_action_pressed("move_right"):
-		velocity.x +=1
-		$AnimatedSprite2D.animation = "right"
-	if Input.is_action_pressed("move_up"):
-		velocity.y -=1
-		$AnimatedSprite2D.animation = "up"
-	if Input.is_action_pressed("move_down"):
-		velocity.y +=1
-		$AnimatedSprite2D.animation = "down"
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * (speed + boost)
-		move_and_slide()
-		$AnimatedSprite2D.play()
+	if  knockbacktime <= 0:
+		if Input.is_action_pressed("move_left"):
+			velocity.x -=1
+			$AnimatedSprite2D.animation = "left"
+		if Input.is_action_pressed("move_right"):
+			velocity.x +=1
+			$AnimatedSprite2D.animation = "right"
+		if Input.is_action_pressed("move_up"):
+			velocity.y -=1
+			$AnimatedSprite2D.animation = "up"
+		if Input.is_action_pressed("move_down"):
+			velocity.y +=1
+			$AnimatedSprite2D.animation = "down"
+		if Input.is_action_pressed("special") and boostTime > 0: 
+				boost = 200
+				boostbar_update(-5)
+				if boostTime < 0:
+					$boostWait.start()
+		if $boostWait.is_stopped() and boostTime < boostTimeMax:
+			boostbar_update(2)
+		if velocity.length() > 0: 
+			velocity = velocity.normalized() * (speed + boost)
+			move_and_slide()
+			boost = 0
+			$AnimatedSprite2D.play()
+		else:
+			$AnimatedSprite2D.stop()
 	else:
-		$AnimatedSprite2D.stop()
-		
+		velocity = Vector2(cos(damageAngle) * _knockback_strength, sin(damageAngle) * _knockback_strength)
+		move_and_slide()
+		knockbacktime -= 1
+	gotHit = false
 
 	position += velocity * delta
 	#position = position.clamp(Vector2.ZERO, screen_size)
@@ -78,11 +102,15 @@ func _pass_down_stats() ->void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("mobs") and !invincible):
 		var damage = body.damage
+		damageAngle = $CollisionShape2D.get_angle_to(body.global_position) + 3.14
+		print(damageAngle)
 		if (health - damage > 0):
+			knockbacktime = 10
 			health -= damage
 			healthbar_update(health)
 			invincible = true
 			boost = 200
+			$AnimatedSprite2D.modulate = Color.BLACK
 			$damageTimer.start()
 		else:
 			hide ()
@@ -93,6 +121,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func healthbar_update(health):
 	$HealthBar.value = health
 
+func boostbar_update(value):
+	boostTime += value
+	$BoostBar.value += value
+
 
 func _on_damage_timer_timeout() -> void:
+	$AnimatedSprite2D.modulate = Color.WHITE
 	invincible = false
+	boost = 0

@@ -158,7 +158,6 @@ size = Vector2(137.69, 167.199)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_xfk5q")
 mob_scene = ExtResource("2_7p6j4")
-mob_cap = 50
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -278,7 +277,6 @@ wait_time = 0.5
 [node name="Player" parent="." instance=ExtResource("2_hbghi")]
 position = Vector2(2760, 1327)
 collision_mask = 1
-platform_floor_layers = 4294901760
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
