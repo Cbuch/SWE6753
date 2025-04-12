@@ -137,6 +137,7 @@ radius = 32.0975
 top_level = true
 texture_filter = 1
 collision_layer = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_4rnky")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
