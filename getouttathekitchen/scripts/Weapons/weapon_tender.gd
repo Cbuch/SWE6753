@@ -34,7 +34,7 @@ func fire_next_tender():
 	tender.set_deferred("monitoring", true)
 
 	tenders_fired += 1
-	print_debug(1.1/adjusted_stats[6])
+	#print_debug(1.1/adjusted_stats[6])
 	await get_tree().create_timer(1.1/adjusted_stats[6]).timeout
 	fire_next_tender()
 

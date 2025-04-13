@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfp1uq0lm5rxp"]
+
+[ext_resource type="Script" path="res://scripts/Weapons/weapon_orb.gd" id="1_pu1uw"]
+[ext_resource type="PackedScene" uid="uid://cajlx6agsvvm2" path="res://Scenes/Weapons/Projectiles/projectile_orb.tscn" id="2_hcrh3"]
+[ext_resource type="Script" path="res://Scenes/enemy_tracker.gd" id="3_6h17g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfh8p"]
+size = Vector2(2538, 1458)
+
+[node name="Weapon_orb" type="Node2D" node_paths=PackedStringArray("projectile_list")]
+script = ExtResource("1_pu1uw")
+projectile_list = [NodePath("projectile_orb")]
+
+[node name="weaponCD" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="projectile_orb" parent="." instance=ExtResource("2_hcrh3")]
+
+[node name="EnemyTracker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_6h17g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTracker"]
+shape = SubResource("RectangleShape2D_qfh8p")
+
+[connection signal="timeout" from="weaponCD" to="." method="_on_weapon_cd_timeout"]
+[connection signal="body_entered" from="EnemyTracker" to="EnemyTracker" method="_on_body_entered"]
+[connection signal="body_exited" from="EnemyTracker" to="EnemyTracker" method="_on_body_exited"]

@@ -22,7 +22,7 @@ var weapon_stats: Array[float] = [1,1,1,1,1,1.1]
 
 @export var adjusted_stats: Array[float] = [0,0,0,0,0,0,0]
 
-@export var projectile_list: Array[Node2D] = []
+@export var projectile_list: Array[ProjectileBase] = []
 
 func _ready() -> void:
 	weapon_stats = [_stat_weapon_amount, _stat_weapon_cd,_stat_weapon_damage, _stat_weapon_duration, _stat_weapon_pierce, _stat_weapon_size, _stat_weapon_speed]

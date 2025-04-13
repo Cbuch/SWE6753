@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b267vgyb0kgug"]
+[gd_scene load_steps=7 format=3 uid="uid://cajlx6agsvvm2"]
 
-[ext_resource type="Script" path="res://scripts/Projectiles/projectile_tender.gd" id="1_k3u1k"]
-[ext_resource type="Texture2D" uid="uid://dxvxx0jd8pr03" path="res://art/weapons/Tenderizer.png" id="2_tfs32"]
-[ext_resource type="Script" path="res://scripts/Weapons/make_curves.gd" id="3_012ov"]
+[ext_resource type="Script" path="res://scripts/Projectiles/projectile_orb.gd" id="1_kb16s"]
+[ext_resource type="Texture2D" uid="uid://bvdyeh0e5xdu4" path="res://art/weapons/EnergyOrb.png" id="1_vomhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34k02"]
-size = Vector2(25, 28.5714)
+size = Vector2(23, 23)
 
 [sub_resource type="Animation" id="Animation_ks2u5"]
 length = 0.001
@@ -42,26 +41,25 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yba5q"]
 _data = {
 "RESET": SubResource("Animation_ks2u5"),
-"tender_spin": SubResource("Animation_34720")
+"orb_spin": SubResource("Animation_34720")
 }
 
-[node name="projectile_tender" type="Node2D" node_paths=PackedStringArray("anim_player", "clover_curve")]
-script = ExtResource("1_k3u1k")
-anim_player = NodePath("AnimationPlayer")
-clover_curve = NodePath("WeaponCurve")
-base_size = 1.0
-base_speed = 1.0
+[node name="projectile_orb" type="Node2D"]
+script = ExtResource("1_kb16s")
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
+rotation = 2.92664
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.02179e-06, 4.25747e-07)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_34k02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("2_tfs32")
+rotation = 2.92664
+texture = ExtResource("1_vomhj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -70,11 +68,5 @@ libraries = {
 
 [node name="weaponDuration" type="Timer" parent="."]
 one_shot = true
-
-[node name="WeaponCurve" type="Path2D" parent="."]
-rotation = 1.5708
-script = ExtResource("3_012ov")
-
-[node name="CurveFollow" type="PathFollow2D" parent="WeaponCurve"]
 
 [connection signal="timeout" from="weaponDuration" to="." method="_on_weapon_duration_timeout"]
