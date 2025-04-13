@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4ekmshgry7qj"
-path="res://.godot/imported/knife.png-bff0496ee223572ce998ddfa2caff61d.ctex"
+uid="uid://y7ffeceln06e"
+path="res://.godot/imported/RollingPin.png-898219e704fd61a1573c17dea3febf34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/knife.png"
-dest_files=["res://.godot/imported/knife.png-bff0496ee223572ce998ddfa2caff61d.ctex"]
+source_file="res://art/weapons/RollingPin.png"
+dest_files=["res://.godot/imported/RollingPin.png-898219e704fd61a1573c17dea3febf34.ctex"]
 
 [params]
 

@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://cooxepxr1yigu"]
+[gd_scene load_steps=13 format=3 uid="uid://cooxepxr1yigu"]
 
 [ext_resource type="Texture2D" uid="uid://dqhg7bakub8nx" path="res://art/PlayerSprite.png" id="1_5nd0v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cbhve"]
-[ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/weapon_knife.tscn" id="3_3ll3d"]
+[ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/Weapons/weapon_knife.tscn" id="3_3ll3d"]
 [ext_resource type="Texture2D" uid="uid://c76yx5bx5iye5" path="res://art/bank.png" id="3_h1ccr"]
 [ext_resource type="Texture2D" uid="uid://bvy8rmtvw61l6" path="res://art/charspriteleft.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://dvn5dtsfiuqe5" path="res://art/charspriteright.png" id="4_3smsa"]
 [ext_resource type="Texture2D" uid="uid://dw4krsqit2p5p" path="res://art/charspriteup.png" id="5_8erm5"]
 [ext_resource type="Script" path="res://scripts/weapon_knife.gd" id="7_ap0ed"]
+[ext_resource type="PackedScene" uid="uid://qj2nd7tqqmax" path="res://Scenes/Weapons/weapon_tender.tscn" id="9_hdegw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
 radius = 18.0
@@ -101,7 +102,7 @@ collision_mask = 2
 script = ExtResource("1_cbhve")
 _stat_player_amount = 4.0
 _stat_player_damage = 50.0
-_current_weapons = [NodePath("Weapon_Knife")]
+_current_weapons = [NodePath("Weapon_Knife"), NodePath("Weapon_Tender")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6t5aa")
@@ -130,6 +131,8 @@ wait_time = 0.5
 
 [node name="Weapon_Knife" parent="." instance=ExtResource("3_3ll3d")]
 script = ExtResource("7_ap0ed")
+
+[node name="Weapon_Tender" parent="." instance=ExtResource("9_hdegw")]
 
 [node name="BoostBar" type="ProgressBar" parent="."]
 offset_left = -28.0

@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://b267vgyb0kgug"]
+
+[ext_resource type="Script" path="res://scripts/Projectiles/projectile_tender.gd" id="1_k3u1k"]
+[ext_resource type="Texture2D" uid="uid://dxvxx0jd8pr03" path="res://art/weapons/Tenderizer.png" id="2_tfs32"]
+[ext_resource type="Script" path="res://scripts/Weapons/make_curves.gd" id="3_012ov"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34k02"]
+size = Vector2(25, 28.5714)
+
+[sub_resource type="Animation" id="Animation_ks2u5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_34720"]
+resource_name = "tender_spin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yba5q"]
+_data = {
+"RESET": SubResource("Animation_ks2u5"),
+"tender_spin": SubResource("Animation_34720")
+}
+
+[node name="projectile_tender" type="Node2D" node_paths=PackedStringArray("anim_player", "clover_curve")]
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_k3u1k")
+anim_player = NodePath("AnimationPlayer")
+clover_curve = NodePath("WeaponCurve")
+base_size = 1.0
+base_speed = 1.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_34k02")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.383929, 0.410714)
+texture = ExtResource("2_tfs32")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yba5q")
+}
+
+[node name="weaponDuration" type="Timer" parent="."]
+one_shot = true
+
+[node name="WeaponCurve" type="Path2D" parent="."]
+rotation = 1.5708
+script = ExtResource("3_012ov")
+
+[node name="CurveFollow" type="PathFollow2D" parent="WeaponCurve"]
+
+[connection signal="timeout" from="weaponDuration" to="." method="_on_weapon_duration_timeout"]

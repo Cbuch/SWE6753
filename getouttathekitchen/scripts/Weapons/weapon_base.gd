@@ -13,6 +13,9 @@ class_name WeaponBase
 @export var _stat_weapon_size = 1		#5
 @export var _stat_weapon_speed = 1		#6  remember to scale any animation speed with this
 
+@export var _base_cd = 1
+@export var _base_duration = 1
+
 var player_stats: Array[float] = [1,1,1,1,1,1,1]
 
 var weapon_stats: Array[float] = [1,1,1,1,1,1.1]
@@ -23,10 +26,10 @@ var weapon_stats: Array[float] = [1,1,1,1,1,1.1]
 
 func _ready() -> void:
 	weapon_stats = [_stat_weapon_amount, _stat_weapon_cd,_stat_weapon_damage, _stat_weapon_duration, _stat_weapon_pierce, _stat_weapon_size, _stat_weapon_speed]
-	
+	adjust_stats()
 	#all weapons should have a timer attached to them to make their attacks work if cd > 0
 	if (_stat_weapon_cd > 0):
-		$weaponCD.start()
+		$weaponCD.start(_base_cd * (1/adjusted_stats[1]))
 	
 	for i in range (projectile_list.size()):
 		projectile_list[i].visible = false

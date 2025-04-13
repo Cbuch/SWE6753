@@ -34,9 +34,9 @@ func _process(delta):
 		current_speed = lerp(0.1, speed, distance / deceleration_range)
 		if (!$AnimationPlayer.is_playing() && !flipped):
 			if(going_up):
-				$AnimationPlayer.play("Knife_flip_down")
+				$AnimationPlayer.play("Knife_flip_down",-1,speed/base_speed)
 			else:
-				$AnimationPlayer.play("Knife_flip_up")
+				$AnimationPlayer.play("Knife_flip_up",-1,speed/base_speed)
 			flipped = true
 			going_up = !going_up
 

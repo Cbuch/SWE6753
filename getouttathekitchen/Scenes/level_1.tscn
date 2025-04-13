@@ -276,9 +276,8 @@ shape = SubResource("CircleShape2D_hbghi")
 wait_time = 0.5
 
 [node name="Player" parent="." instance=ExtResource("2_hbghi")]
+visibility_layer = 17
 position = Vector2(2760, 1327)
-collision_mask = 1
-platform_floor_layers = 4294901760
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -355,5 +354,4 @@ scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="area_entered" from="Player/areadetector" to="." method="_on_areadetector_area_entered"]

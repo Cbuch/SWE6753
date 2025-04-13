@@ -12,8 +12,8 @@ func attack() -> void:
 		add_child(new_knife)  # Add it as a child so it appears in the scene
 	#make a circle of points around the player relative to number of knives
 	for i in range(adjusted_stats[0]):
-		var follow = $WeaponCircle/CircleFollow  # Get PathFollow2D
-		follow.progress_ratio = i / float(adjusted_stats[0])  # Position evenly around the circle
+		var follow = $WeaponCircle/CircleFollow # Get PathFollow2D
+		follow.progress_ratio = i / adjusted_stats[0]  # Position evenly around the circle
 			# Assign the knife to the position of the path
 		var direction = follow.position.normalized()
 		projectile_list[i].position = Vector2(0,0)
@@ -28,9 +28,9 @@ func attack() -> void:
 
 func _on_weapon_cd_timeout() -> void:
 	attack()
-	$weaponDuration.start()
+	$weaponDuration.start(_base_duration * adjusted_stats[3])
 
 
 func _on_weapon_duration_timeout() -> void:
 	stop_attack()
-	$weaponCD.start()
+	$weaponCD.start(_base_cd * (1/adjusted_stats[1]))
