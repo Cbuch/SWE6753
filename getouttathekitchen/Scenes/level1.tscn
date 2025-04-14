@@ -1,12 +1,9 @@
-[gd_scene load_steps=21 format=4 uid="uid://dyrj5q5yr7ofb"]
+[gd_scene load_steps=16 format=4 uid="uid://4r6588hwirk0"]
 
-[ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
-[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_xfk5q"]
-[ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_7p6j4"]
-[ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://Scenes/player.tscn" id="2_hbghi"]
+[ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_4f70t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
-texture = ExtResource("1_hbghi")
+texture = ExtResource("1_4f70t")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -70,10 +67,8 @@ tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_hn12h")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hbghi"]
-texture = ExtResource("1_hbghi")
+texture = ExtResource("1_4f70t")
 texture_region_size = Vector2i(64, 64)
-5:0/size_in_atlas = Vector2i(3, 3)
-5:0/0 = 0
 8:0/size_in_atlas = Vector2i(3, 3)
 8:0/0 = 0
 11:0/size_in_atlas = Vector2i(3, 3)
@@ -108,15 +103,17 @@ texture_region_size = Vector2i(64, 64)
 6:11/0 = 0
 12:11/size_in_atlas = Vector2i(6, 6)
 12:11/0 = 0
+5:0/size_in_atlas = Vector2i(3, 3)
+5:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ihfcg"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_hbghi")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hbghi"]
-vertices = PackedVector2Array(6241, 12.0234, 6241, 1989, 6210.18, 1064.2, 6206.85, 1120.8, 6176.66, 1592.95, 6174.36, 1664.79, 5947.07, 1523.26, 5909.26, 1584.34, 5054.19, 1784.11, 4993.19, 1746.22, 4650.42, 574.938, 4665.09, 482.703, 5094.68, 451.617, 5147.31, 459.461, 5889.53, 959.57, 439.508, 1729.43, 464.102, 846.938, 490.867, 747, 4392.4, 667.352, 4471.35, 697.289, 4921.41, 1743.92, 4858.11, 1777.81, 472.508, 1791.09, 3432.55, 50.7109, 3361.28, 19.3984, 6184.27, 1162.59, 6142.83, 1529.56, 5031.44, 1989, 5047.89, 1980.19, 4851.81, 1973.89, 4876.14, 1989, 9.03125, 1989, 5053.21, 428.078, 6165.67, 998.492, 6136.55, 1725.87, 6006.67, 847.797, 6143.62, 1182.33, 6081.94, 1491.62, 4820.22, 1838.81, 5358, 263.047, 5358, 230.531, 5965.24, 869.727, 6073.34, 1759.81, 5085.78, 1919.19, 6001.69, 1757.51, 4817.92, 1910.59, 369.75, 1956.59, 5033.7, 384.469, 3170.11, 129.711, 3150.7, 221.07, 1837.12, 83.7031, 1806.08, 48, 5940.79, 1719.56, 5088.08, 1847.41, 5906.97, 1656.19, 5916.15, 913.609, 5204.42, 421.742, 6102.23, 1176.42, 6010.28, 1489.32, 470.219, 1862.36, 4400.13, 408.742, 464.102, 647.062, 3411.5, 308.594, 5251.6, 135.219, 5038.55, 349.32, 4457.57, 378.062, 1649.82, 425, 3352.55, 336.258, 432.602, 1922.93, 390.938, 920.102, 314.938, 1596.6, 255.523, 1559.7, 291, 946.867, 184.25, 1557.41, 191.062, 920.102, 121.398, 1591.07, 117.906, 846.938, 390.938, 573.906, 3350.86, 19.4219, 13.9688, 27.9688, 1499.15, 306.906, 1529.36, 387.078, 291, 547.133, 83.7812, 1651.64, 91.1328, 747, 191.062, 573.906, 117.906, 647.062, 298.477, 1954.3, 239.062, 1917.4, 114.492, 1784.57, 81.4922, 1722.91)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 2, 1), PackedInt32Array(4, 3, 1, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18, 19, 20, 21, 22), PackedInt32Array(23, 24, 0), PackedInt32Array(25, 3, 4, 26), PackedInt32Array(1, 27, 28), PackedInt32Array(29, 30, 31), PackedInt32Array(32, 12, 11), PackedInt32Array(0, 2, 33), PackedInt32Array(34, 5, 1), PackedInt32Array(0, 33, 35), PackedInt32Array(36, 25, 26, 37), PackedInt32Array(22, 21, 38), PackedInt32Array(39, 40, 0, 35, 41), PackedInt32Array(42, 1, 28, 43, 44), PackedInt32Array(45, 29, 31, 46), PackedInt32Array(47, 32, 11), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(42, 34, 1), PackedInt32Array(52, 44, 43, 53), PackedInt32Array(54, 52, 53), PackedInt32Array(39, 41, 55, 56), PackedInt32Array(57, 36, 37, 58), PackedInt32Array(22, 38, 45, 59), PackedInt32Array(60, 18, 17, 61), PackedInt32Array(56, 55, 14, 13), PackedInt32Array(62, 23, 0, 63), PackedInt32Array(7, 54, 53, 8), PackedInt32Array(64, 47, 11, 65), PackedInt32Array(66, 50, 49, 67), PackedInt32Array(14, 57, 58, 6), PackedInt32Array(68, 59, 45), PackedInt32Array(0, 40, 63), PackedInt32Array(62, 63, 64, 65), PackedInt32Array(10, 9, 20, 19), PackedInt32Array(69, 16, 15, 70), PackedInt32Array(69, 70, 71, 72), PackedInt32Array(72, 71, 73, 74), PackedInt32Array(74, 73, 75, 76), PackedInt32Array(67, 60, 61, 77, 66), PackedInt32Array(62, 65, 60, 67), PackedInt32Array(78, 48, 51), PackedInt32Array(79, 78, 51), PackedInt32Array(79, 51, 80), PackedInt32Array(79, 80, 81, 77, 82), PackedInt32Array(76, 75, 83, 84), PackedInt32Array(81, 66, 77), PackedInt32Array(79, 82, 85), PackedInt32Array(79, 85, 86), PackedInt32Array(46, 68, 45), PackedInt32Array(87, 46, 31), PackedInt32Array(88, 87, 31), PackedInt32Array(89, 88, 31), PackedInt32Array(90, 89, 31), PackedInt32Array(83, 90, 31, 79, 84), PackedInt32Array(79, 86, 84)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(4, 18, 6251, 2, 6251, 1999, -1, 1999)])
+vertices = PackedVector2Array(6210.18, 1064.23, 6255.86, 27.9531, 6229.13, 1973.01, 6206.85, 1120.83, 6176.66, 1592.96, 6174.36, 1664.81, 5947.07, 1523.27, 5909.26, 1584.35, 5054.19, 1784.14, 4993.19, 1746.25, 4650.42, 574.992, 4665.09, 482.742, 5094.68, 451.648, 5147.31, 459.492, 5889.53, 959.602, 439.5, 1729.46, 464.102, 846.969, 490.867, 747.031, 4392.41, 667.398, 4471.35, 697.344, 4921.41, 1743.95, 4858.12, 1777.85, 472.523, 1791.12, 6184.27, 1162.62, 6142.83, 1529.58, 4851.82, 1973.92, 4854.26, 1975.44, 2, 1983.98, 5053.21, 428.109, 6165.67, 998.523, 6136.55, 1725.88, 6006.67, 847.828, 6143.62, 1182.36, 6081.94, 1491.64, 4820.23, 1838.84, 6073.34, 1759.83, 5051.07, 1975.09, 5085.78, 1919.22, 6001.69, 1757.53, 5358, 263.078, 5358, 230.563, 5965.24, 869.758, 4817.93, 1910.62, 369.75, 1956.62, 5033.7, 384.5, 3170.11, 129.742, 3150.7, 221.102, 1837.12, 83.7266, 1806.08, 48.0313, 5940.79, 1719.59, 5088.08, 1847.44, 5906.97, 1656.2, 5916.15, 913.641, 5204.42, 421.773, 6102.23, 1176.45, 6010.28, 1489.33, 470.227, 1862.39, 4400.13, 408.789, 464.102, 647.094, 3411.5, 308.617, 3432.55, 50.7422, 5251.6, 135.25, 5038.55, 349.352, 4457.57, 378.109, 1649.82, 425.031, 3352.55, 336.289, 432.609, 1922.96, 390.953, 920.133, 314.938, 1596.63, 255.523, 1559.74, 291, 946.898, 184.258, 1557.45, 191.063, 920.133, 121.398, 1591.1, 117.906, 846.969, 390.953, 573.938, 3355.25, 16.7813, 83.7813, 1651.67, 91.1328, 747.031, 1529.36, 387.109, 1499.15, 306.938, 291, 547.172, 2, 2.03906, 298.477, 1954.33, 239.07, 1917.43, 114.508, 1784.6, 81.4922, 1722.95, 191.063, 573.938, 117.906, 647.094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 0, 2), PackedInt32Array(4, 3, 2, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 12, 13, 14), PackedInt32Array(15, 16, 17, 18, 19, 20, 21, 22), PackedInt32Array(23, 3, 4, 24), PackedInt32Array(25, 26, 27), PackedInt32Array(28, 12, 11), PackedInt32Array(1, 0, 29), PackedInt32Array(30, 5, 2), PackedInt32Array(1, 29, 31), PackedInt32Array(32, 23, 24, 33), PackedInt32Array(22, 21, 34), PackedInt32Array(35, 2, 36, 37, 38), PackedInt32Array(39, 40, 1, 31, 41), PackedInt32Array(42, 25, 27, 43), PackedInt32Array(44, 28, 11), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(35, 30, 2), PackedInt32Array(49, 38, 37, 50), PackedInt32Array(51, 49, 50), PackedInt32Array(39, 41, 52, 53), PackedInt32Array(54, 32, 33, 55), PackedInt32Array(22, 34, 42, 56), PackedInt32Array(57, 18, 17, 58), PackedInt32Array(53, 52, 14, 13), PackedInt32Array(59, 60, 1, 61), PackedInt32Array(7, 51, 50, 8), PackedInt32Array(62, 44, 11, 63), PackedInt32Array(64, 47, 46, 65), PackedInt32Array(14, 54, 55, 6), PackedInt32Array(66, 56, 42), PackedInt32Array(1, 40, 61), PackedInt32Array(59, 61, 62, 63), PackedInt32Array(10, 9, 20, 19), PackedInt32Array(67, 16, 15, 68), PackedInt32Array(67, 68, 69, 70), PackedInt32Array(70, 69, 71, 72), PackedInt32Array(72, 71, 73, 74), PackedInt32Array(65, 57, 58, 75, 64), PackedInt32Array(59, 63, 57, 65), PackedInt32Array(76, 45, 48), PackedInt32Array(74, 73, 77, 78), PackedInt32Array(79, 64, 75), PackedInt32Array(80, 79, 75, 81), PackedInt32Array(48, 80, 81, 82), PackedInt32Array(43, 66, 42), PackedInt32Array(83, 43, 27), PackedInt32Array(84, 83, 27), PackedInt32Array(85, 84, 27), PackedInt32Array(86, 85, 27), PackedInt32Array(77, 86, 27, 82, 78), PackedInt32Array(1, 60, 76), PackedInt32Array(82, 1, 76), PackedInt32Array(82, 76, 48), PackedInt32Array(82, 81, 87), PackedInt32Array(82, 87, 88), PackedInt32Array(82, 88, 78)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 6266, 18, 6239, 1983, -8, 1994)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hn12h"]
 radius = 189.518
@@ -128,37 +125,25 @@ height = 434.258
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbghi"]
 radius = 6.91596
 
-[sub_resource type="Curve2D" id="Curve2D_6444e"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -706, -448, 0, 0, 0, 0, 720, -459, 0, 0, 0, 0, 735, 420, 0, 0, 0, 0, -741, 430, 0, 0, 0, 0, -704, -443, 0, 0, 0, 0, -706, -448)
-}
-point_count = 6
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
-size = Vector2(15.384, 36.4575)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
-size = Vector2(188.981, 110.667)
+size = Vector2(328.715, 109.786)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6444e"]
-size = Vector2(134.092, 98.979)
+size = Vector2(136.111, 150.785)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evi0p"]
-size = Vector2(556.427, 218.591)
+size = Vector2(720.245, 204.606)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lsmp6"]
-size = Vector2(387.458, 192.861)
+size = Vector2(386.9, 200.958)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrdnt"]
-size = Vector2(123.983, 146.648)
+size = Vector2(141.892, 125.552)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
-size = Vector2(137.69, 167.199)
+size = Vector2(127.515, 297.058)
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_xfk5q")
-mob_scene = ExtResource("2_7p6j4")
-mob_cap = 50
+[node name="Level1" type="Node2D" groups=["Level"]]
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -272,86 +257,78 @@ rotation = -0.753299
 scale = Vector2(-18.5615, -18.5615)
 shape = SubResource("CircleShape2D_hbghi")
 
-[node name="mobtimer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="outer Wall" type="Node2D" parent="NavigationRegion2D/Walls"]
+position = Vector2(7784.69, 943.678)
+rotation = -3.09
 
-[node name="Player" parent="." instance=ExtResource("2_hbghi")]
-visibility_layer = 17
-position = Vector2(2760, 1327)
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/outer Wall"]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/outer Wall/StaticBody2D"]
+polygon = PackedVector2Array(7.99707, -8.03302, -0.00292969, 1975.97, 6240, 1983.97, 6264, -0.03302, 7664, -32.033, 7816, 2559.97, -808.003, 2455.97, -632.003, -32.033)
 
-[node name="MobPath" type="Path2D" parent="Player"]
-curve = SubResource("Curve2D_6444e")
+[node name="grapes3" type="Node2D" parent="NavigationRegion2D/Walls"]
+position = Vector2(7784.69, 943.678)
+rotation = -3.09
 
-[node name="MobSpawnLocation" type="PathFollow2D" parent="Player/MobPath"]
-position = Vector2(-706, -448)
-rotation = -0.00771373
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/grapes3"]
 
-[node name="areadetector" type="Area2D" parent="Player"]
-collision_layer = 0
-collision_mask = 32
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/grapes3/StaticBody2D"]
+polygon = PackedVector2Array(6248, -16.033, 7648, -0.03302, 7664, -1696.03, -1032, -1440.03, -1200, 47.967, -0.00292969, -0.03302)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/areadetector"]
-position = Vector2(-0.5, 2.40168)
-scale = Vector2(2.27509, 0.680337)
-shape = SubResource("RectangleShape2D_chwpn")
+[node name="areas_lv1" type="Node2D" parent="."]
 
-[node name="areas" type="Node2D" parent="."]
-
-[node name="carb" type="Area2D" parent="areas"]
+[node name="carb" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="carbarea" type="CollisionShape2D" parent="areas/carb"]
+[node name="carbarea" type="CollisionShape2D" parent="areas_lv1/carb" groups=["areagroup"]]
 position = Vector2(648.5, 1517.5)
 scale = Vector2(6.61971, 7.94276)
 shape = SubResource("RectangleShape2D_7p6j4")
 
-[node name="dairy" type="Area2D" parent="areas"]
+[node name="dairy" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="dairyarea" type="CollisionShape2D" parent="areas/dairy"]
+[node name="dairyarea" type="CollisionShape2D" parent="areas_lv1/dairy" groups=["areagroup"]]
 position = Vector2(720.5, 531)
 scale = Vector2(10.4033, 9.49696)
 shape = SubResource("RectangleShape2D_6444e")
 
-[node name="sugar" type="Area2D" parent="areas"]
+[node name="sugar" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="sugararea" type="CollisionShape2D" parent="areas/sugar"]
+[node name="sugararea" type="CollisionShape2D" parent="areas_lv1/sugar"]
 position = Vector2(2289.28, 467.666)
 scale = Vector2(3.04341, 4.26673)
 shape = SubResource("RectangleShape2D_evi0p")
 
-[node name="fruit" type="Area2D" parent="areas"]
+[node name="fruit" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="fruitarea" type="CollisionShape2D" parent="areas/fruit"]
+[node name="fruitarea" type="CollisionShape2D" parent="areas_lv1/fruit"]
 position = Vector2(3978.5, 480.5)
 scale = Vector2(4.26111, 4.81693)
 shape = SubResource("RectangleShape2D_lsmp6")
 
-[node name="meat" type="Area2D" parent="areas"]
+[node name="meat" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="proteinarea" type="CollisionShape2D" parent="areas/meat"]
+[node name="proteinarea" type="CollisionShape2D" parent="areas_lv1/meat"]
 position = Vector2(5513, 586)
 scale = Vector2(11.6145, 7.7737)
 shape = SubResource("RectangleShape2D_xrdnt")
 
-[node name="veg" type="Area2D" parent="areas"]
+[node name="veg" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
-[node name="vegarea" type="CollisionShape2D" parent="areas/veg"]
+[node name="vegarea" type="CollisionShape2D" parent="areas_lv1/veg" groups=["areagroup"]]
 position = Vector2(5468.5, 1576)
 scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_wrinw")
 
-[connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
-[connection signal="area_entered" from="Player/areadetector" to="." method="_on_areadetector_area_entered"]
+[node name="Timer" type="Timer" parent="."]

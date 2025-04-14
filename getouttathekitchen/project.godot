@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GetOuttaTheKitchen"
-run/main_scene="res://Menus/MenuScenes/MainMenu.tscn"
+run/main_scene="res://Scenes/how_to_play.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -33,6 +33,14 @@ folder_colors={
 
 mobs=""
 projectile=""
+Level=""
+carb=""
+dairy=""
+fruit=""
+protein=""
+sugar=""
+veg=""
+cards=""
 
 [input]
 

@@ -32,8 +32,9 @@ func _ready() -> void:
 		$weaponCD.start(_base_cd * (1/adjusted_stats[1]))
 	
 	for i in range (projectile_list.size()):
+		var wep = projectile_list[i]
 		projectile_list[i].visible = false
-		projectile_list[i].set_deferred("monitoring", false)
+		projectile_list[i].get_node("Area2D").set_deferred("monitorable", false)
 
 func attack() ->void:
 	print_debug("This is shooting wrong buddy")
@@ -41,7 +42,7 @@ func attack() ->void:
 func stop_attack() -> void:
 	for i in range(projectile_list.size()):
 		projectile_list[i].visible = false
-		projectile_list[i].set_deferred("monitoring", false)
+		projectile_list[i].get_node("Area2D").set_deferred("monitorable", false)
 
 
 func upgrade_stat(type: int,amount: float) -> void:

@@ -54,7 +54,10 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.02179e-06, 4.25747e-07)
+<<<<<<< HEAD
 scale = Vector2(1, 1)
+=======
+>>>>>>> 097248b532665735325d0327d2b6669c8fe5a362
 shape = SubResource("RectangleShape2D_34k02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

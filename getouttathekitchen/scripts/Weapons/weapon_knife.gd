@@ -22,7 +22,7 @@ func attack() -> void:
 		projectile_list[i].rotation = direction.angle() + PI / 2
 		
 		projectile_list[i].visible = true  # Ensure the knife is visible
-		projectile_list[i].set_deferred("monitoring", true)
+		projectile_list[i].get_node("Area2D").set_deferred("monitorable", true)
 		#projectile_list[i].get_node("AnimationPlayer").play("Knife_flip_up")
 
 
