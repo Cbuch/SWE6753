@@ -99,6 +99,7 @@ height = 50.0
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_current_weapons") groups=["player"]]
 collision_mask = 2
 script = ExtResource("1_cbhve")
+_stat_speed = 400
 _stat_player_amount = 4.0
 _stat_player_damage = 50.0
 _current_weapons = [NodePath("Weapon_Knife")]
@@ -112,7 +113,7 @@ animation = &"up_damage"
 frame_progress = 0.268303
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32
+collision_layer = 36
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

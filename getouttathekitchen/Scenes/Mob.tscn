@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://csvaqup5wtyww"]
+[gd_scene load_steps=29 format=3 uid="uid://csvaqup5wtyww"]
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_4rnky"]
+[ext_resource type="PackedScene" uid="uid://bhgkimn4gxb1s" path="res://Scenes/crumb.tscn" id="2_4qpe1"]
 [ext_resource type="Texture2D" uid="uid://5ftrc0iw518k" path="res://art/enemy_sprites/carb_1.png" id="2_qw4th"]
 [ext_resource type="Texture2D" uid="uid://qjuv8clobpes" path="res://art/enemy_sprites/carb_2.png" id="3_r1x8t"]
 [ext_resource type="Texture2D" uid="uid://y5b0mblp8v7n" path="res://art/enemy_sprites/carb_3.png" id="4_dgvvo"]
@@ -139,12 +140,13 @@ texture_filter = 1
 collision_layer = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_4rnky")
+crumb = ExtResource("2_4qpe1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v40e")
-animation = &"carb"
-frame_progress = 0.430566
+animation = &"sugar"
+frame_progress = 0.479874
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1.5)

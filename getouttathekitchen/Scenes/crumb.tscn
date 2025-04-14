@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://bhgkimn4gxb1s"]
+[gd_scene load_steps=5 format=3 uid="uid://bhgkimn4gxb1s"]
 
-[node name="Crumb" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/crumb.gd" id="1_xbub0"]
+[ext_resource type="Texture2D" uid="uid://d2g32lwk36vk7" path="res://art/crumb.png" id="2_r7idr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olwu0"]
+size = Vector2(22, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgal3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r7idr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Crumb" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_xbub0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_olwu0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, -3)
+scale = Vector2(0.703125, 0.703125)
+sprite_frames = SubResource("SpriteFrames_qgal3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
