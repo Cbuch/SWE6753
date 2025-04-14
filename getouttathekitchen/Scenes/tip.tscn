@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfym2k1ypj43t"]
 
 [ext_resource type="Texture2D" uid="uid://bg361rv7avg0l" path="res://art/Help2.png" id="1_ycpg7"]
-[ext_resource type="Script" path="res://Scenes/tip.gd" id="1_yr56a"]
+[ext_resource type="Script" path="res://scripts/tip.gd" id="1_yr56a"]
 
 [node name="tip" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://doge1sf3dmv2e"]
 
-[ext_resource type="Script" path="res://Scenes/how_to_play.gd" id="1_0lw08"]
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_0lw08"]
 [ext_resource type="Texture2D" uid="uid://cn8fdgon37kwr" path="res://art/Help1.png" id="1_g6rrd"]
 
 [node name="howToPlay" type="Control"]
