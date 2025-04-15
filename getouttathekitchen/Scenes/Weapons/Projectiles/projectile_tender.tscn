@@ -49,15 +49,6 @@ _data = {
 script = ExtResource("1_k3u1k")
 anim_player = NodePath("AnimationPlayer")
 clover_curve = NodePath("WeaponCurve")
-tender_duration = null
-pierce = null
-base_pierce = null
-size = null
-base_size = 1.0
-speed = null
-base_speed = 1.0
-damage = null
-base_damage = null
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
 collision_layer = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://4r6588hwirk0"]
+[gd_scene load_steps=18 format=4 uid="uid://4r6588hwirk0"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_4f70t"]
 
@@ -122,6 +122,13 @@ radius = 189.518
 radius = 127.395
 height = 434.258
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4e5np"]
+radius = 65.8535
+height = 143.503
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l16oa"]
+radius = 84.4808
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hbghi"]
 radius = 6.91596
 
@@ -153,7 +160,7 @@ tile_set = SubResource("TileSet_hn12h")
 [node name="table objects" type="TileMapLayer" parent="Ground"]
 texture_filter = 1
 position = Vector2(0, 3)
-tile_map_data = PackedByteArray("AAAEABsAAAAAAAsAAFADABUAAAADAAgAAGANAB0AAAADAAgAAAAIABIAAAAAAAgAAAAJAB0AAAAAAAgAAFAEAAsAAAAGAAsAAAAHAAIAAAAGAAgAAAATAAYAAAAGAAgAAAAOAAMAAAAJAAgAAAAaAAMAAAAMAAsAAAAgAAEAAAAMAAgAAFAqAAYAAAAMAAgAAAAcAAkAAAAPAAgAADAzAAIAAAAFAAMAAABGAAgAAAAFAAMAADA3AAYAAAAIAAAAAABHAAIAAAAIAAAAADA8AAMAAAAFAAAAAABJAAwAAAAFAAAAAABRAAQAAAARAAMAAABeAA8AAAARAAMAAGBXAAMAAAARAAAAAABXAAIAAAARAAAAAABXAAEAAAARAAAAAABeAAQAAAARAAAAAABcAAMAAAARAAAAAABdAAIAAAARAAAAAABfAAsAAAARAAAAAABeAAgAAAAUAAAAAABNAB0AAAALAAMAAABTAB0AAAAOAAAAAABVABMAAAAOAAAAAABZAB4AAAALAAAAAABeABUAAAALAAAAAABfAB4AAAALAAAAAAAXAB0AAAALAAAAAAAeABwAAAAUAAAAAAAbABEAAAAIAAAAAAAqAAUAAAAMAAgAAAAdAAUAAAAMAAgAAAACAAYAAAAJAAgAAAAtAAIAAAAPAAgAAABeABkAAAALAAMAAAA3ABAAAAAPAAgAAAA1AA0AAAAAAAgAAAAdABYAAAAOAAAAADAOABQAAAADAAgAAAA9ABwAAAADAAgAAABAABQAAAAFAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEABsAAAAAAAsAAFADABUAAAADAAgAAGANAB0AAAADAAgAAAAIABIAAAAAAAgAAAAJAB0AAAAAAAgAAFAEAAsAAAAGAAsAAAAHAAIAAAAGAAgAAAATAAYAAAAGAAgAAAAOAAMAAAAJAAgAAAAaAAMAAAAMAAsAAAAgAAEAAAAMAAgAAFAqAAYAAAAMAAgAAAAcAAkAAAAPAAgAADAzAAIAAAAFAAMAAABGAAgAAAAFAAMAADA3AAYAAAAIAAAAAABHAAIAAAAIAAAAADA8AAMAAAAFAAAAAABJAAwAAAAFAAAAAABRAAQAAAARAAMAAABeAA8AAAARAAMAAGBXAAMAAAARAAAAAABXAAIAAAARAAAAAABXAAEAAAARAAAAAABeAAQAAAARAAAAAABcAAMAAAARAAAAAABdAAIAAAARAAAAAABfAAsAAAARAAAAAABeAAgAAAAUAAAAAABTAB0AAAAOAAAAAABVABMAAAAOAAAAAABeABUAAAALAAAAAAAXAB0AAAALAAAAAAAeABwAAAAUAAAAAAAbABEAAAAIAAAAAAAqAAUAAAAMAAgAAAAdAAUAAAAMAAgAAAACAAYAAAAJAAgAAAAtAAIAAAAPAAgAAABeABkAAAALAAMAAAA3ABAAAAAPAAgAAAA1AA0AAAAAAAgAAAAdABYAAAAOAAAAADAOABQAAAADAAgAAAA9ABwAAAADAAgAAABAABQAAAAFAAAAAABZAB0AAAALAAAAAABgAB0AAAALAAAAAABNABwAAAALAAMAAAA=")
 tile_set = SubResource("TileSet_ihfcg")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -202,6 +209,36 @@ rotation = -3.09
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
 polygon = PackedVector2Array(3179, 136, 3162, 216, 3353, 325, 3402, 302, 3422, 57, 3356, 28)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(1760, 1119.97)
+rotation = 2.25505
+scale = Vector2(1.63848, 0.836668)
+shape = SubResource("CapsuleShape2D_4e5np")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(3539, 429.967)
+rotation = 2.25505
+scale = Vector2(1.63848, 0.836668)
+shape = SubResource("CapsuleShape2D_4e5np")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(4595, 153.967)
+rotation = 2.25505
+scale = Vector2(1.63848, 0.836668)
+shape = SubResource("CapsuleShape2D_4e5np")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(4130, 1319.97)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(3869, 233.967)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="NavigationRegion2D/Walls/grapes/StaticBody2D"]
+position = Vector2(4708, 811.967)
+shape = SubResource("CircleShape2D_l16oa")
+
 [node name="grapes2" type="Node2D" parent="NavigationRegion2D/Walls"]
 position = Vector2(7784.69, 943.678)
 rotation = -3.09
@@ -239,10 +276,26 @@ rotation = -3.09
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/cabbage"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/cabbage/StaticBody2D"]
-position = Vector2(4953, 1879)
+position = Vector2(4961, 1807.97)
 rotation = -0.753299
 scale = Vector2(-18.5615, -18.5615)
 shape = SubResource("CircleShape2D_hbghi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/Walls/cabbage/StaticBody2D"]
+position = Vector2(5737, 1889.97)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/Walls/cabbage/StaticBody2D"]
+position = Vector2(6184, 1893.97)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/Walls/cabbage/StaticBody2D"]
+position = Vector2(6041, 1370.97)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/Walls/cabbage/StaticBody2D"]
+position = Vector2(1513, 1900.97)
+shape = SubResource("CircleShape2D_l16oa")
 
 [node name="cabbage2" type="Node2D" parent="NavigationRegion2D/Walls"]
 position = Vector2(6674.9, 1143.72)
@@ -275,7 +328,28 @@ rotation = -3.09
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/grapes3/StaticBody2D"]
 polygon = PackedVector2Array(6248, -16.033, 7648, -0.03302, 7664, -1696.03, -1032, -1440.03, -1200, 47.967, -0.00292969, -0.03302)
 
+[node name="smallcheeses" type="Node2D" parent="NavigationRegion2D/Walls"]
+position = Vector2(7784.69, 943.678)
+rotation = -3.09
+
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/smallcheeses"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/smallcheeses/StaticBody2D"]
+polygon = PackedVector2Array(412.997, 231.967, 533.997, 249.967, 545.997, 210.967, 445.997, 71.967, 407.997, 176.967)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/smallcheeses/StaticBody2D"]
+polygon = PackedVector2Array(1180, 490.967, 1297, 502.967, 1310, 471.967, 1218, 323.967, 1175, 433.967)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/smallcheeses/StaticBody2D"]
+position = Vector2(922.997, 224.967)
+shape = SubResource("CircleShape2D_l16oa")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/Walls/smallcheeses/StaticBody2D"]
+position = Vector2(156.997, 413.967)
+shape = SubResource("CircleShape2D_l16oa")
+
 [node name="areas_lv1" type="Node2D" parent="."]
+visible = false
 
 [node name="carb" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32

@@ -7,6 +7,7 @@ extends Node2D
 @export var lv4 : PackedScene
 @export var card : PackedScene
 
+
 @export var mob_cap: int = 0
 
 var mobAmount = 0

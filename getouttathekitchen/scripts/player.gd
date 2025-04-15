@@ -40,6 +40,8 @@ func _ready() -> void:
 	$BoostBar.value = boostTime
 	stats_array = [_stat_player_amount, _stat_player_cd,_stat_player_damage, _stat_player_duration, _stat_player_pierce, _stat_player_size, _stat_player_speed]
 	screen_size = get_viewport_rect().size
+
+	
 	
 	_pass_down_stats()
 

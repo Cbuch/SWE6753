@@ -19,13 +19,13 @@ offset_bottom = 40.0
 texture = ExtResource("1_g6rrd")
 
 [node name="Button" type="Button" parent="."]
+texture_filter = 6
 layout_mode = 0
-offset_left = 296.0
-offset_top = 560.0
-offset_right = 346.0
-offset_bottom = 594.0
-scale = Vector2(3.80122, 3.80122)
-theme_override_font_sizes/font_size = 18
+offset_left = 321.0
+offset_top = 583.0
+offset_right = 366.0
+offset_bottom = 614.0
+theme_override_font_sizes/font_size = 64
 text = "Next"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

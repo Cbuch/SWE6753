@@ -100,11 +100,12 @@ collision_mask = 2
 script = ExtResource("1_cbhve")
 _stat_speed = 400
 _stat_player_amount = 4.0
+_stat_player_cd = 20.0
 _stat_player_damage = 50.0
-_stat_player_duration = 1.0
-_stat_player_pierce = -3.0
+_stat_player_duration = 20.0
+_stat_player_pierce = -500.0
 _stat_player_speed = 1.0
-_current_weapons = [NodePath("Weapon_Knife")]
+_current_weapons = [NodePath("Weapon/Weapon_Knife")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6t5aa")
@@ -131,10 +132,6 @@ show_percentage = false
 [node name="damageTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Weapon_Knife" parent="." instance=ExtResource("3_3ll3d")]
-_stat_weapon_duration = 10
-_stat_weapon_pierce = -500
-
 [node name="BoostBar" type="ProgressBar" parent="."]
 offset_left = -28.0
 offset_top = 25.0
@@ -144,6 +141,12 @@ show_percentage = false
 
 [node name="boostWait" type="Timer" parent="."]
 one_shot = true
+
+[node name="Weapon" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Weapon_Knife" parent="Weapon" instance=ExtResource("3_3ll3d")]
+rotation = 0.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

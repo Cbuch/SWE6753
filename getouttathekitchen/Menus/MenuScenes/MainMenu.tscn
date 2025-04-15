@@ -49,7 +49,6 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
 [node name="MainMenu" type="Control"]
-texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,15 +67,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ColorRect" type="ColorRect" parent="MainBackground"]
+z_index = -1
+layout_mode = 0
+offset_left = -79.0
+offset_top = -8.0
+offset_right = 1233.0
+offset_bottom = 733.0
+color = Color(1, 0.509804, 0, 1)
+
 [node name="MainMenuBackground" type="TextureRect" parent="MainBackground"]
 z_index = -1
-texture_filter = 1
+texture_filter = 2
 layout_mode = 1
 anchors_preset = -1
 offset_left = 293.531
-offset_top = 16.748
+offset_top = 11.4591
 offset_right = 782.531
-offset_bottom = 659.748
+offset_bottom = 654.459
 texture = ExtResource("4_1bq7t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -94,7 +102,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Start" type="Button" parent="VBoxContainer"]
-texture_filter = 1
+texture_filter = 2
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
 theme_override_fonts/font = ExtResource("3_rf4mm")
@@ -104,6 +112,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_e0k2f")
 text = "~Start~"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_rf4mm")
 theme_override_font_sizes/font_size = 30
@@ -112,6 +121,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ou5wr")
 text = "~Settings~"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
+texture_filter = 2
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Start")
 theme_override_fonts/font = ExtResource("3_rf4mm")
