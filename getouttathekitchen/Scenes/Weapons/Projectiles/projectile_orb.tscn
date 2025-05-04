@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cajlx6agsvvm2"]
 
-[ext_resource type="Script" path="res://scripts/Projectiles/projectile_orb.gd" id="1_kb16s"]
+[ext_resource type="Script" path="res://scripts/Weapons/Projectiles/projectile_orb.gd" id="1_kb16s"]
 [ext_resource type="Texture2D" uid="uid://bvdyeh0e5xdu4" path="res://art/weapons/EnergyOrb.png" id="1_vomhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_34k02"]

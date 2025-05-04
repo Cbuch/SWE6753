@@ -27,7 +27,7 @@ func _ready() -> void:
 	load_new()
 	#$mobtimer.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Player/Camera2D/Time.text = str($matchtimer.time_left).pad_decimals(2)
 	#if Input.is_action_pressed("special"):
 		#load_new()

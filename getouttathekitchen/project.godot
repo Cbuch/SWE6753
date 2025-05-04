@@ -27,6 +27,7 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Scenes/": "red",
+"res://art/enemy_sprites/boss/": "pink",
 "res://scripts/": "blue"
 }
 

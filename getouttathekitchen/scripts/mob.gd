@@ -22,7 +22,7 @@ func _ready():
 		$AnimatedSprite2D.animation = mob_types.pick_random()
 	$AnimatedSprite2D.play()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	health_update()
 	navigation_agent.target_position = target.global_position
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position())

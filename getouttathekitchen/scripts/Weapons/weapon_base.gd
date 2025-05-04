@@ -32,7 +32,7 @@ func _ready() -> void:
 		$weaponCD.start(_base_cd * (1/adjusted_stats[1]))
 	
 	for i in range (projectile_list.size()):
-		var wep = projectile_list[i]
+		#var wep = projectile_list[i]
 		projectile_list[i].visible = false
 		projectile_list[i].get_node("Area2D").set_deferred("monitorable", false)
 

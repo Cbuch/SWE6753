@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://cooxepxr1yigu"]
 
-[ext_resource type="Texture2D" uid="uid://dqhg7bakub8nx" path="res://art/PlayerSprite.png" id="1_5nd0v"]
+[ext_resource type="Texture2D" uid="uid://dqhg7bakub8nx" path="res://art/Player/PlayerSprite.png" id="1_5nd0v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cbhve"]
 [ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/Weapons/weapon_knife.tscn" id="3_3ll3d"]
 [ext_resource type="Texture2D" uid="uid://c76yx5bx5iye5" path="res://art/bank.png" id="3_h1ccr"]
-[ext_resource type="Texture2D" uid="uid://bvy8rmtvw61l6" path="res://art/charspriteleft.png" id="3_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://dvn5dtsfiuqe5" path="res://art/charspriteright.png" id="4_3smsa"]
-[ext_resource type="Texture2D" uid="uid://dw4krsqit2p5p" path="res://art/charspriteup.png" id="5_8erm5"]
+[ext_resource type="Texture2D" uid="uid://bvy8rmtvw61l6" path="res://art/Player/charspriteleft.png" id="3_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dvn5dtsfiuqe5" path="res://art/Player/charspriteright.png" id="4_3smsa"]
+[ext_resource type="Texture2D" uid="uid://dw4krsqit2p5p" path="res://art/Player/charspriteup.png" id="5_8erm5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
 radius = 18.0
@@ -94,45 +94,6 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgqql"]
 radius = 25.0
 height = 50.0
-
-[sub_resource type="GDScript" id="GDScript_d5gfh"]
-script/source = "extends WeaponBase
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func attack() -> void:
-	adjust_stats()
-	while (adjusted_stats[0] > projectile_list.size()): # 0 is amount
-		var new_knife = projectile_list[0].duplicate(Node.DUPLICATE_USE_INSTANTIATION)  # Duplicate first knife
-		projectile_list.append(new_knife)
-		add_child(new_knife)  # Add it as a child so it appears in the scene
-	#make a circle of points around the player relative to number of knives
-	for i in range(adjusted_stats[0]):
-		var follow = $WeaponCircle/CircleFollow  # Get PathFollow2D
-		follow.progress_ratio = i / float(adjusted_stats[0])  # Position evenly around the circle
-			# Assign the knife to the position of the path
-		var direction = follow.position.normalized()
-		projectile_list[i].position = Vector2(0,0)
-		projectile_list[i].start_pos = Vector2(0,0)
-		projectile_list[i].end_pos = follow.position + (direction * 150)
-		projectile_list[i].rotation = direction.angle() + PI / 2
-		
-		projectile_list[i].visible = true  # Ensure the knife is visible
-		projectile_list[i].set_deferred(\"monitoring\", true)
-		#projectile_list[i].get_node(\"AnimationPlayer\").play(\"Knife_flip_up\")
-
-
-func _on_weapon_cd_timeout() -> void:
-	attack()
-	$weaponDuration.start()
-
-
-func _on_weapon_duration_timeout() -> void:
-	stop_attack()
-	$weaponCD.start()
-"
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_current_weapons") groups=["player"]]
 collision_mask = 2

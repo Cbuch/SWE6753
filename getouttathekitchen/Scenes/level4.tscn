@@ -254,7 +254,6 @@ scale = Vector2(0.998145, 1.00136)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/outerwall1/StaticBody2D"]
 position = Vector2(5290.08, -1200.58)
 rotation = -0.0562133
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mywwh")
 
 [node name="mobtimer" type="Timer" parent="."]

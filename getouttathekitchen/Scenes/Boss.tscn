@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=3 uid="uid://b8eq8xideed34"]
+
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_ki37a"]
+[ext_resource type="Texture2D" uid="uid://cwgj2ey2hk68v" path="res://art/enemy_sprites/boss/Wizard.png" id="2_8gysm"]
+[ext_resource type="Texture2D" uid="uid://cwv55fettvrgi" path="res://art/enemy_sprites/boss/Donut.png" id="3_r2i6w"]
+[ext_resource type="Texture2D" uid="uid://g658kfiknsy0" path="res://art/enemy_sprites/boss/dnut1.png" id="4_cs7ff"]
+[ext_resource type="Texture2D" uid="uid://lgdk1c2yyyf" path="res://art/enemy_sprites/boss/dnut2.png" id="5_r1euj"]
+[ext_resource type="Texture2D" uid="uid://3wrhmbuobdul" path="res://art/enemy_sprites/boss/dnut3.png" id="6_1aghn"]
+[ext_resource type="Texture2D" uid="uid://c6rudu0yo2as5" path="res://art/enemy_sprites/boss/dnut4.png" id="7_ceof1"]
+[ext_resource type="Texture2D" uid="uid://dy0qrwnsulp0l" path="res://art/enemy_sprites/boss/frosting_temp.png" id="8_kpc1b"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v40e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8gysm")
+}],
+"loop": true,
+"name": &"Wizard",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dahcf"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w8b7f"]
+radius = 250.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mko2j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r2i6w")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cs7ff")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_r1euj")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_1aghn")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ceof1")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_ty1cu"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DonutSprites:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_64f1m"]
+resource_name = "donut_Spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DonutSprites:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hl874"]
+_data = {
+"RESET": SubResource("Animation_ty1cu"),
+"donut_Spin": SubResource("Animation_64f1m")
+}
+
+[node name="Wizard Boss" type="CharacterBody2D" groups=["mobs"]]
+top_level = true
+texture_filter = 1
+collision_layer = 2
+platform_floor_layers = 4294901760
+script = ExtResource("1_ki37a")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6v40e")
+animation = &"Wizard"
+
+[node name="WizCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_dahcf")
+
+[node name="Collision Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="DonutCollider" type="CollisionShape2D" parent="Collision Detector"]
+shape = SubResource("CircleShape2D_w8b7f")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 32.0
+offset_bottom = -32.0
+theme_override_font_sizes/font_size = 1
+rounded = true
+show_percentage = false
+
+[node name="DonutSprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_mko2j")
+animation = &"0"
+frame_progress = 0.82821
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hl874")
+}
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="FrostingTemp" type="Sprite2D" parent="."]
+position = Vector2(0, -602)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_kpc1b")
+
+[connection signal="area_entered" from="Collision Detector" to="." method="_on_collision_detector_area_entered"]
+[connection signal="body_entered" from="Collision Detector" to="." method="_on_collision_detector_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
