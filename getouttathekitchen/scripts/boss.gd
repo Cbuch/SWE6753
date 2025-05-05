@@ -4,16 +4,17 @@ extends CharacterBody2D
 
 var typing = "blank"
 
-@export var crumb: PackedScene
-
 var damage = 25
 var isAttacking =  false
 var attack_points: Array[Vector2] = []
+@export var Frostings: Array[Node2D] = []
 func _ready():
 	healthbar_setup()
 	attack_points_setup()
 	$AnimationPlayer.play("donut_Spin")
+	frosting_off()
 	default_dnut()
+	$AttackTimer.start(3)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("move_down"):
@@ -80,22 +81,32 @@ func _on_attack_timer_timeout() -> void:
 	
 	var attack_areas = []
 	while attack_areas.size() < 4:
-		var num = rng.randi_range(1, 8)
+		var num = rng.randi_range(0, 7)
 		if num not in attack_areas:
 			attack_areas.append(num)
 	
-	for i in attack_areas:
-		attack_points[i]
-		#something with attack points and spawning stuff
-	pass
+	for i in attack_areas.size():
+		Frostings[i].position = attack_points[attack_areas[i]]
+		frosting_on()
+	$AttackTimer.start(7)
 
 func attack_points_setup() -> void:
 	#1280 wide
-	var point_count = 0
-	var max = 8
-	while point_count < max:
-		attack_points[point_count] = Vector2((1280 * ((point_count+1)/max)), -600)
-		
 	
-	
+	var point_count = 0.0
+	var point_max = 8.0
+	while point_count < point_max:
+		attack_points.append(Vector2((1280 * ((point_count+1)/point_max) - 640), 0))
+		point_count += 1
 	pass
+
+func frosting_off() -> void:
+	for f in Frostings:
+		f.visible = false
+		f.get_node("Area2D").set_deferred("monitorable", false)
+
+func frosting_on() -> void:
+	for f in Frostings:
+		f.position.y = 0
+		f.visible = true
+		f.get_node("Area2D").set_deferred("monitorable", true)
