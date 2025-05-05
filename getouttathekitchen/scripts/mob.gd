@@ -6,6 +6,8 @@ extends CharacterBody2D
 var typing = "blank"
 const SPEED = 300
 
+@export var crumb: PackedScene
+
 var damage = 25
 
 
@@ -15,6 +17,7 @@ func _ready():
 	print(typing)
 	if (typing.contains("carb") || typing.contains("veg") || typing.contains("sugar") || typing.contains("meat") || typing.contains("fruit") || typing.contains("dairy")):
 		animtype(typing)
+		add_to_group(typing)
 	else:
 		$AnimatedSprite2D.animation = mob_types.pick_random()
 	$AnimatedSprite2D.play()
@@ -29,6 +32,7 @@ func _process(delta: float) -> void:
 
 func die():
 	get_parent().lowerMobCount()
+	dropCrumb()
 	queue_free()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
@@ -48,5 +52,24 @@ func healthbar_setup():
 	
 func health_update():
 	$HealthBar.value=health
-	
+
+func dropCrumb():
+	var newCrumb = crumb.instantiate()
+	newCrumb.add_to_group($AnimatedSprite2D.animation)
+	for i in newCrumb.get_groups():
+		match i:
+			"carb":
+				newCrumb.modulate = Color.YELLOW
+			"protein":
+				newCrumb.modulate = Color.RED
+			"dairy":
+				newCrumb.modulate = Color.STEEL_BLUE
+			"sugar":
+				newCrumb.modulate = Color.HOT_PINK
+			"veg":
+				newCrumb.modulate = Color.WEB_GREEN
+			"fruit":
+				newCrumb.modulate = Color.REBECCA_PURPLE
+	newCrumb.position = global_position
+	get_parent().add_child(newCrumb)
 	

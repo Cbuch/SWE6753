@@ -24,7 +24,7 @@ func update_projectile_stats(proj_stats: Array[float]) -> void:
 		damage = proj_stats[2] * base_damage
 		
 		if(base_pierce > 0):
-			pierce = proj_stats[4] + base_pierce
+			pierce = proj_stats[3] + base_pierce
 		
 		size = proj_stats[5] * base_size
 		scale = Vector2(size,size)

@@ -2,12 +2,10 @@ extends CharacterBody2D
 
 signal hit
 
-@export var speed = 400
 @export var rotation_speed = 1.5  # turning speed in radians/sec
 var screen_size
 #stats for player
 @export var _stat_health = 100
-@export var _stat_damage = 1
 @export var _stat_defense = 2
 @export var _stat_speed = 1
 
@@ -21,6 +19,7 @@ var screen_size
 @export var _stat_player_pierce: float = 0		#4
 @export var _stat_player_size: float = 0		#5
 @export var _stat_player_speed: float = 0		#6
+
 
 var stats_array: Array[float] = []
 var health = _stat_health
@@ -41,6 +40,8 @@ func _ready() -> void:
 	$BoostBar.value = boostTime
 	stats_array = [_stat_player_amount, _stat_player_cd,_stat_player_damage, _stat_player_duration, _stat_player_pierce, _stat_player_size, _stat_player_speed]
 	screen_size = get_viewport_rect().size
+
+	
 	
 	_pass_down_stats()
 
@@ -70,7 +71,7 @@ func _process(delta: float) -> void:
 		if $boostWait.is_stopped() and boostTime < boostTimeMax:
 			boostbar_update(2)
 		if velocity.length() > 0: 
-			velocity = velocity.normalized() * (speed + boost)
+			velocity = velocity.normalized() * (_stat_speed + boost)
 			move_and_slide()
 			boost = 0
 			$AnimatedSprite2D.play()
@@ -100,12 +101,15 @@ func _pass_down_stats() ->void:
 		_current_weapons[i].update_player_stats(stats_array)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	print(body.name)
 	if(body.is_in_group("mobs") and !invincible):
 		var damage = body.damage
 		damageAngle = $CollisionShape2D.get_angle_to(body.global_position) + 3.14
 		print(damageAngle)
 		if (health - damage > 0):
 			knockbacktime = 10
+			if damage - _stat_defense < 1:
+				damage = 1
 			health -= damage
 			healthbar_update(health)
 			invincible = true
@@ -130,3 +134,35 @@ func _on_damage_timer_timeout() -> void:
 	$AnimatedSprite2D.modulate = Color.WHITE
 	invincible = false
 	boost = 0
+
+func adjustHealth(amount):
+	_stat_health += amount
+	health = _stat_health
+	$HealthBar.max_value = _stat_health
+	$HealthBar.value = health
+
+func adjustDam(amount):
+	_stat_player_damage += amount
+	upgrade_stat(2, amount)
+	_pass_down_stats()
+
+func adjustDef(amount):
+	_stat_defense += amount
+
+func adjustSpeed(amount):
+	_stat_speed += amount
+
+func adjustNum(amount):
+	_stat_player_amount += amount
+	upgrade_stat(0, amount)
+	_pass_down_stats()
+
+func adjustDuration(amount):
+	_stat_player_duration += amount
+	upgrade_stat(3, amount)
+	_pass_down_stats()
+
+func adjustSize(amount):
+	_stat_player_size += amount
+	upgrade_stat(5, amount)
+	_pass_down_stats()
