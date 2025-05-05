@@ -9,7 +9,7 @@ size = Vector2(2538, 1458)
 
 [node name="Weapon_orb" type="Node2D" node_paths=PackedStringArray("projectile_list")]
 script = ExtResource("1_pu1uw")
-projectile_list = [null]
+projectile_list = [NodePath("projectile_orb")]
 
 [node name="weaponCD" type="Timer" parent="."]
 wait_time = 4.0
