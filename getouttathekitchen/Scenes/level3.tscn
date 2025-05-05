@@ -181,7 +181,7 @@ size = Vector2(683.699, 10.1605)
 size = Vector2(191.111, 97.663)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6444e"]
-size = Vector2(136.111, 150.785)
+size = Vector2(209.645, 95.7149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evi0p"]
 size = Vector2(720.245, 204.606)
@@ -339,7 +339,7 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="dairyarea" type="CollisionShape2D" parent="areas_lv3/dairy"]
-position = Vector2(4096, 1488)
+position = Vector2(4079.5, 1492.5)
 scale = Vector2(10.4033, 9.49696)
 shape = SubResource("RectangleShape2D_6444e")
 

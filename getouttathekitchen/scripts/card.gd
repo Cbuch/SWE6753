@@ -29,27 +29,39 @@ func getRecipeBook(input: String):
 	#Categories
 	var carbRecipes = [
 		["res://art/Cards/Card_ArtisanLoaf.png", 'health', 50],
+		["res://art/Cards/Card_RiceBowl.png", 'health', 150],
+		["res://art/Cards/Card_GarlicBread.png", 'health', 200],
 		["res://art/Cards/Card_CinnamonRoll.png", 'health', 100]
 	]
 	var fruitRecipes = [
 		["res://art/Cards/Card_FruitSalad.png", 'duration', .1],
+		["res://art/Cards/Card_FriedPlantains.png", 'duration', .4],
+		["res://art/Cards/Card_Lemonade.png", 'duration', .3],
 		["res://art/Cards/Card_RoastWatermelon.png", 'duration', .2]
 	]
 	var vegRecipes = [
 		["res://art/Cards/Card_TomatoSoup.png", "speed", 100],
+		["res://art/Cards/Card_BeanBurger.png", "speed", 300],
+		["res://art/Cards/Card_StuffedPeppers.png", "speed", 400],
 		["res://art/Cards/Card_EggplantParm.png", "speed", 200]
 	]
 	var meatRecipes = [
 		["res://art/Cards/Card_Steak.png", "damage", 25],
+		["res://art/Cards/Card_FriedTurkey.png", "defense", 25],
+		["res://art/Cards/Card_BeefWellington.png", "damage", 75],
 		["res://art/Cards/Card_Beans.png", "defense", 10]
 	]
 	var dairyRecipes = [
 		["res://art/Cards/Card_CheeseWheel.png","size", 1.25],
+		["res://art/Cards/Card_GrilledCheese.png","size", 2.0],
+		["res://art/Cards/Card_Fondue.png","size", 1.75],
 		["res://art/Cards/Card_Milkshake.png", "size", 1.5]
 	]
 	var sugarRecipes = [
-		["res://art/Cards/Card_CheeseWheel.png", "number", 1],
-		["res://art/Cards/Card_Milkshake.png", "number", 2]
+		["res://art/Cards/Card_GummyBear.png", "number", 1],
+		["res://art/Cards/Card_Lollipop.png", "number", 3],
+		["res://art/Cards/Card_Flan.png", "number", 4],
+		["res://art/Cards/Card_Doughnut.png", "number", 2]
 	]
 	
 	#Master book
