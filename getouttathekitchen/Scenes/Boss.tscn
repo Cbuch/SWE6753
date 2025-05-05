@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8eq8xideed34"]
+[gd_scene load_steps=17 format=3 uid="uid://c533egnayoqvr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_ki37a"]
+[ext_resource type="PackedScene" uid="uid://bmoaeuth30pgw" path="res://Scenes/youwin.tscn" id="2_4rqr3"]
 [ext_resource type="Texture2D" uid="uid://cwgj2ey2hk68v" path="res://art/enemy_sprites/boss/Wizard.png" id="2_8gysm"]
 [ext_resource type="Texture2D" uid="uid://cwv55fettvrgi" path="res://art/enemy_sprites/boss/Donut.png" id="3_r2i6w"]
 [ext_resource type="Texture2D" uid="uid://g658kfiknsy0" path="res://art/enemy_sprites/boss/dnut1.png" id="4_cs7ff"]
-[ext_resource type="Texture2D" uid="uid://lgdk1c2yyyf" path="res://art/enemy_sprites/boss/dnut2.png" id="5_r1euj"]
+[ext_resource type="Texture2D" uid="uid://bnxye7ovksfks" path="res://art/enemy_sprites/boss/dnut2.png" id="5_r1euj"]
 [ext_resource type="Texture2D" uid="uid://3wrhmbuobdul" path="res://art/enemy_sprites/boss/dnut3.png" id="6_1aghn"]
 [ext_resource type="Texture2D" uid="uid://c6rudu0yo2as5" path="res://art/enemy_sprites/boss/dnut4.png" id="7_ceof1"]
-[ext_resource type="PackedScene" uid="uid://bsnl7olrhs0rn" path="res://Scenes/boss_frosting.tscn" id="8_0daf2"]
+[ext_resource type="PackedScene" uid="uid://b5fxtertahga6" path="res://Scenes/boss_frosting.tscn" id="8_0daf2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6v40e"]
 animations = [{
@@ -24,7 +25,7 @@ animations = [{
 radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w8b7f"]
-radius = 250.0
+radius = 1.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mko2j"]
 animations = [{
@@ -115,6 +116,8 @@ position = Vector2(614, 327)
 collision_layer = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_ki37a")
+health = 100000
+end_scene = ExtResource("2_4rqr3")
 Frostings = [NodePath("Frosting holder/Boss_Frosting"), NodePath("Frosting holder/Boss_Frosting2"), NodePath("Frosting holder/Boss_Frosting3"), NodePath("Frosting holder/Boss_Frosting4")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

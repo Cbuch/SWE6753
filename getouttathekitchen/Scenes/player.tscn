@@ -96,7 +96,7 @@ radius = 25.0
 height = 50.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_current_weapons") groups=["player"]]
-collision_mask = 2
+collision_mask = 18
 script = ExtResource("1_cbhve")
 _stat_speed = 400
 _stat_player_amount = 4.0

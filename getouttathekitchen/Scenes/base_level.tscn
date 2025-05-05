@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyrj5q5yr7ofb"]
+[gd_scene load_steps=14 format=3 uid="uid://dyrj5q5yr7ofb"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_egtc2"]
 [ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_xk5q8"]
+[ext_resource type="PackedScene" uid="uid://c533egnayoqvr" path="res://Scenes/Boss.tscn" id="3_14j5s"]
 [ext_resource type="PackedScene" uid="uid://4r6588hwirk0" path="res://Scenes/level1.tscn" id="3_j6e5a"]
 [ext_resource type="PackedScene" uid="uid://iobyva41yp6k" path="res://Scenes/level2.tscn" id="4_r3l1d"]
 [ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://Scenes/player.tscn" id="4_sn6ou"]
@@ -26,6 +27,7 @@ size = Vector2(15.384, 36.4575)
 process_mode = 1
 script = ExtResource("1_egtc2")
 mob_scene = ExtResource("2_xk5q8")
+boss_scene = ExtResource("3_14j5s")
 lv1 = ExtResource("3_j6e5a")
 lv2 = ExtResource("4_r3l1d")
 lv3 = ExtResource("5_pphog")
@@ -168,7 +170,7 @@ position = Vector2(2816, 1408)
 position = Vector2(2760, 1328)
 
 [node name="matchtimer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 2.0
 one_shot = true
 
 [node name="padding" type="Timer" parent="."]

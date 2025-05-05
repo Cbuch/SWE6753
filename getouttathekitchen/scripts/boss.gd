@@ -1,8 +1,6 @@
 extends CharacterBody2D
-@export var target: CharacterBody2D
 @export var health = 1000
-
-var typing = "blank"
+@export var end_scene: PackedScene
 
 var damage = 25
 var isAttacking =  false
@@ -26,18 +24,14 @@ func _process(_delta: float) -> void:
 func die():
 	#maybe some animation or something
 	#add a winning thing?
-	queue_free()
+	get_tree().change_scene_to_file("res://Scenes/youwin.tscn")
+	#queue_free()
+	pass
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
 		health = health - area.get_parent().damage
 		health_update()
-
-
-func animtype(input: StringName):
-	print(input)
-	typing = input
-	$AnimatedSprite2D.set_animation(input)
 
 func healthbar_setup():
 	$HealthBar.max_value = health
@@ -50,7 +44,7 @@ func health_update():
 		die()
 	else: if health <= $HealthBar.max_value * .2:
 		print_debug("Here we are")
-		$"Collision Detector/DonutCollider".shape.radius = 130
+		$"WizCollider".shape.radius = 130
 		$AnimationPlayer.speed_scale = 2.6
 		dnut = 4
 	else: if health <= $HealthBar.max_value * .4:
@@ -71,7 +65,7 @@ func sprite_check(sprite_num: int) -> void:
 
 func default_dnut() -> int:
 	$AnimationPlayer.speed_scale = 1
-	$"Collision Detector/DonutCollider".shape.radius = 250
+	$"WizCollider".shape.radius = 250
 	return 0
 
 func _on_attack_timer_timeout() -> void:
@@ -88,7 +82,7 @@ func _on_attack_timer_timeout() -> void:
 	for i in attack_areas.size():
 		Frostings[i].position = attack_points[attack_areas[i]]
 		frosting_on()
-	$AttackTimer.start(7)
+	$AttackTimer.start(4)
 
 func attack_points_setup() -> void:
 	#1280 wide
