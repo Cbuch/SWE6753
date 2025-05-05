@@ -133,10 +133,10 @@ radius = 84.4808
 radius = 6.91596
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7p6j4"]
-size = Vector2(328.715, 109.786)
+size = Vector2(255.223, 109.786)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6444e"]
-size = Vector2(136.111, 150.785)
+size = Vector2(136.111, 128.778)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evi0p"]
 size = Vector2(720.245, 204.606)
@@ -148,7 +148,7 @@ size = Vector2(386.9, 200.958)
 size = Vector2(141.892, 125.552)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrinw"]
-size = Vector2(127.515, 297.058)
+size = Vector2(127.515, 233.166)
 
 [node name="Level1" type="Node2D" groups=["Level"]]
 
@@ -166,7 +166,7 @@ tile_set = SubResource("TileSet_ihfcg")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hbghi")
 
-[node name="Walls" type="Node2D" parent="NavigationRegion2D"]
+[node name="Walls" type="Node2D" parent="NavigationRegion2D" groups=["oob"]]
 position = Vector2(7823, 541)
 rotation = 3.09
 
@@ -314,19 +314,19 @@ shape = SubResource("CircleShape2D_hbghi")
 position = Vector2(7784.69, 943.678)
 rotation = -3.09
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/outer Wall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/outer Wall" groups=["oob"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/outer Wall/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/outer Wall/StaticBody2D" groups=["oob"]]
 polygon = PackedVector2Array(7.99707, -8.03302, -0.00292969, 1975.97, 6240, 1983.97, 6264, -0.03302, 7664, -32.033, 7816, 2559.97, -808.003, 2455.97, -632.003, -32.033)
 
 [node name="grapes3" type="Node2D" parent="NavigationRegion2D/Walls"]
 position = Vector2(7784.69, 943.678)
 rotation = -3.09
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/grapes3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/grapes3" groups=["oob"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/grapes3/StaticBody2D"]
-polygon = PackedVector2Array(6248, -16.033, 7648, -0.03302, 7664, -1696.03, -1032, -1440.03, -1200, 47.967, -0.00292969, -0.03302)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/grapes3/StaticBody2D" groups=["oob"]]
+polygon = PackedVector2Array(6261, 4.96698, 7648, -0.03302, 7664, -1696.03, -1032, -1440.03, -1031, 680.967, -0.00292969, -0.03302)
 
 [node name="smallcheeses" type="Node2D" parent="NavigationRegion2D/Walls"]
 position = Vector2(7784.69, 943.678)
@@ -349,14 +349,13 @@ position = Vector2(156.997, 413.967)
 shape = SubResource("CircleShape2D_l16oa")
 
 [node name="areas_lv1" type="Node2D" parent="."]
-visible = false
 
 [node name="carb" type="Area2D" parent="areas_lv1" groups=["areagroup"]]
 collision_layer = 32
 collision_mask = 0
 
 [node name="carbarea" type="CollisionShape2D" parent="areas_lv1/carb" groups=["areagroup"]]
-position = Vector2(648.5, 1517.5)
+position = Vector2(891.749, 1517.5)
 scale = Vector2(6.61971, 7.94276)
 shape = SubResource("RectangleShape2D_7p6j4")
 
@@ -365,7 +364,7 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="dairyarea" type="CollisionShape2D" parent="areas_lv1/dairy" groups=["areagroup"]]
-position = Vector2(720.5, 531)
+position = Vector2(720.5, 635.5)
 scale = Vector2(10.4033, 9.49696)
 shape = SubResource("RectangleShape2D_6444e")
 
@@ -401,7 +400,7 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="vegarea" type="CollisionShape2D" parent="areas_lv1/veg" groups=["areagroup"]]
-position = Vector2(5468.5, 1576)
+position = Vector2(5468.5, 1422)
 scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_wrinw")
 

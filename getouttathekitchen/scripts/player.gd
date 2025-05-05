@@ -120,7 +120,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			hide ()
 			hit.emit()
 			$CollisionShape2D.set_deferred("disabled", true)
-			get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+			get_tree().change_scene_to_file("res://Scenes/youlose.tscn")
 
 func healthbar_update(new_health):
 	$HealthBar.value = new_health

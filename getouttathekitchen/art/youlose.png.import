@@ -2,21 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<<< HEAD:getouttathekitchen/art/enemy_sprites/boss/dnut2.png.import
-uid="uid://lgdk1c2yyyf"
-path="res://.godot/imported/dnut2.png-c96f13dbf832a852742ab20b744e6cab.ctex"
-========
-uid="uid://dx4f04l4tcerl"
-path="res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"
->>>>>>>> fa41bf0fd9ec5fbd5b01bc2aa0250395fd3dce1c:getouttathekitchen/PlayerSprite.png.import
+uid="uid://dlxngl1ad00vq"
+path="res://.godot/imported/youlose.png-421d9a73c67aea81a7f9dfceb791bbc5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemy_sprites/boss/dnut2.png"
-dest_files=["res://.godot/imported/dnut2.png-c96f13dbf832a852742ab20b744e6cab.ctex"]
+source_file="res://art/youlose.png"
+dest_files=["res://.godot/imported/youlose.png-421d9a73c67aea81a7f9dfceb791bbc5.ctex"]
 
 [params]
 

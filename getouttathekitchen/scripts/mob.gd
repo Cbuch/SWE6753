@@ -14,8 +14,11 @@ var damage = 25
 func _ready():
 	healthbar_setup()
 	var mob_types = Array($AnimatedSprite2D.sprite_frames.get_animation_names())
-	print(typing)
+	#print(typing)
+	typing = typing.replace("2",'')
 	if (typing.contains("carb") || typing.contains("veg") || typing.contains("sugar") || typing.contains("meat") || typing.contains("fruit") || typing.contains("dairy")):
+		if (randi_range(0, 1) == 1):
+			typing= str(typing) + '2'
 		animtype(typing)
 		add_to_group(typing)
 	else:
@@ -55,7 +58,7 @@ func health_update():
 
 func dropCrumb():
 	var newCrumb = crumb.instantiate()
-	newCrumb.add_to_group($AnimatedSprite2D.animation)
+	newCrumb.add_to_group($AnimatedSprite2D.animation.replace("2",''))
 	for i in newCrumb.get_groups():
 		match i:
 			"carb":

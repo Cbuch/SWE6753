@@ -421,9 +421,9 @@ position = Vector2(4400.89, 135.133)
 rotation = -3.09
 scale = Vector2(0.998145, 1.00136)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/OuterWall1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/OuterWall1" groups=["oob"]]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/OuterWall1/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/OuterWall1/StaticBody2D" groups=["oob"]]
 polygon = PackedVector2Array(-3369.25, -428.417, 2659.94, -424.423, 2651.92, 1415.08, -3350.21, 1415.08, -3289.1, 2855.12, 3574.63, 2882.08, 3700.87, -1252.3, -3469.43, -1387.11)
 
 [node name="OuterWall2" type="Node2D" parent="NavigationRegion2D/Walls"]
@@ -431,9 +431,9 @@ position = Vector2(4400.89, 135.133)
 rotation = -3.09
 scale = Vector2(0.998145, 1.00136)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/OuterWall2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Walls/OuterWall2" groups=["oob"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/OuterWall2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/OuterWall2/StaticBody2D" groups=["oob"]]
 position = Vector2(-4330.23, 812.886)
 scale = Vector2(7.35266, 3.59679)
 shape = SubResource("RectangleShape2D_dynie")
