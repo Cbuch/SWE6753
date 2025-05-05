@@ -118,10 +118,6 @@ rotation = -0.00771373
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MobPath/MobSpawnLocation/Area2D"]
 shape = SubResource("CircleShape2D_w80bt")
 
-[node name="ColorRect" type="ColorRect" parent="Player/MobPath/MobSpawnLocation/Area2D"]
-offset_right = 161.0
-offset_bottom = 150.0
-
 [node name="areadetector" type="Area2D" parent="Player"]
 collision_layer = 0
 collision_mask = 32
