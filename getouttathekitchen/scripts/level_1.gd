@@ -20,6 +20,7 @@ var fruitVal = 0
 var meatVal = 0
 var sugarVal = 0
 var dairyVal = 0
+var wait = false
 
 func _ready() -> void:
 	#currentLevel = lvArray.pop_front().instantiate()
@@ -35,40 +36,45 @@ func _process(delta: float) -> void:
 func _on_mobtimer_timeout() -> void:
 	# Create a new instance of the Mob scene.
 	if mobAmount < mob_cap:
-		var mob = mob_scene.instantiate()
-		mobAmount += 1
-		# Choose a random location on Path2D.
-		var mob_spawn_location: PathFollow2D = $Player/MobPath/MobSpawnLocation
-		
-		mob_spawn_location.progress_ratio = randf()
-		mob.target = $Player
-		
-		#if a player is in a food types' area then make that food's enemies 50% more likely to spawn
-		#Currently the valuss are set at 50% but we can make them higher if we like. 
-		mob_boost = $Player/areadetector.get_overlapping_areas()
-		var mobarray = []
-		for i in mob_boost:
-			if i.is_in_group("areagroup"):
-				mobarray.append(i)
-				print(mobarray)
-		if(mobarray.size() > 0):
-			var randValue = randi_range(0,mobarray.size())
-			if (randValue != 0):
-				mob_boost = mobarray[randValue-1].name
+		if (wait == false):
+			var mob = mob_scene.instantiate()
+			mobAmount += 1
+			# Choose a random location on Path2D.
+			var mob_spawn_location: PathFollow2D = $Player/MobPath/MobSpawnLocation
+			#print(mob_spawn_location.get_child(0).get_overlapping_areas())
+			mob_spawn_location.progress_ratio = randf()
+			mob.target = $Player
+			
+			#if a player is in a food types' area then make that food's enemies 50% more likely to spawn
+			#Currently the valuss are set at 50% but we can make them higher if we like. 
+			mob_boost = $Player/areadetector.get_overlapping_areas()
+			var mobarray = []
+			for i in mob_boost:
+				if i.is_in_group("areagroup"):
+					mobarray.append(i)
+					#print(mobarray)
+			if(mobarray.size() > 0):
+				var randValue = randi_range(0,mobarray.size())
+				if (randValue != 0):
+					mob_boost = mobarray[randValue-1].name
+				else:
+					mob_boost = ""
 			else:
 				mob_boost = ""
-		else:
-			mob_boost = ""
-	
-		print(mob_boost)
-		if(mob_boost != null):
-			print(mob_boost)
-			mob.animtype(mob_boost)
 		
-		# Set the mob's position to the random location.
-		mob.global_position = mob_spawn_location.global_position
-		# Spawn the mob by adding it to the Main scene.
-		add_child(mob)
+			#print(mob_boost)
+			if(mob_boost != null):
+				#print(mob_boost)
+				mob.animtype(mob_boost)
+			
+			# Set the mob's position to the random location.
+			mob.global_position = mob_spawn_location.global_position
+			# Spawn the mob by adding it to the Main scene.
+			print("wait = " + str(wait))
+			
+			add_child(mob)
+			print("I spawned")
+		wait = false
 
 func lowerMobCount():
 	mobAmount -= 1
@@ -76,12 +82,6 @@ func lowerMobCount():
 
 
 func load_new():
-	#$mobtimer.stop()
-	#for i in get_children():
-		#if i.is_in_group('mobs') or i.is_in_group('Level'):
-			#i.queue_free()
-	#
-	#
 	if lvArray.size() > 0:
 		add_child(lvArray[0].instantiate())
 	else:
@@ -195,3 +195,9 @@ func _on_padding_timeout() -> void:
 	$mobtimer.start()
 	$matchtimer.start()
 	pass # Replace with function body.
+
+
+func _on_area_2d_body_entered(body: StaticBody2D) -> void:
+	print (body.get_groups())
+	if (body.is_in_group("oob")):
+		wait = true

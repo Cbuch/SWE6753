@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyrj5q5yr7ofb"]
+[gd_scene load_steps=13 format=3 uid="uid://dyrj5q5yr7ofb"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_egtc2"]
 [ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_xk5q8"]
@@ -15,6 +15,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -706, -448, 0, 0, 0, 0, 720, -459, 0, 0, 0, 0, 735, 420, 0, 0, 0, 0, -741, 430, 0, 0, 0, 0, -704, -443, 0, 0, 0, 0, -706, -448)
 }
 point_count = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w80bt"]
+radius = 3.16202
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
 size = Vector2(15.384, 36.4575)
@@ -110,6 +113,15 @@ curve = SubResource("Curve2D_6444e")
 position = Vector2(-706, -448)
 rotation = -0.00771373
 
+[node name="Area2D" type="Area2D" parent="Player/MobPath/MobSpawnLocation"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MobPath/MobSpawnLocation/Area2D"]
+shape = SubResource("CircleShape2D_w80bt")
+
+[node name="ColorRect" type="ColorRect" parent="Player/MobPath/MobSpawnLocation/Area2D"]
+offset_right = 161.0
+offset_bottom = 150.0
+
 [node name="areadetector" type="Area2D" parent="Player"]
 collision_layer = 0
 collision_mask = 32
@@ -173,6 +185,7 @@ script = ExtResource("9_l2211")
 
 [connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="body_entered" from="Player/MobPath/MobSpawnLocation/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Player/areadetector" to="." method="_on_areadetector_area_entered"]
 [connection signal="timeout" from="matchtimer" to="." method="_on_matchtimer_timeout"]
 [connection signal="timeout" from="padding" to="." method="_on_padding_timeout"]

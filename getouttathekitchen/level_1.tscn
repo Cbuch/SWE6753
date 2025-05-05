@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://mqhe484f3sjd"]
+[gd_scene load_steps=7 format=4 uid="uid://48q6fcwpp7df"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_hbghi"]
 [ext_resource type="PackedScene" uid="uid://ctd8ortrxwjdx" path="res://Menus/MenuScenes/PauseMenu.tscn" id="3_4k3ip"]
