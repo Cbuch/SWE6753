@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx4f04l4tcerl"
-path="res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"
+uid="uid://dy0qrwnsulp0l"
+path="res://.godot/imported/frosting_temp.png-3322b1b621fcde77b2a301699834e634.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerSprite.png"
-dest_files=["res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"]
+source_file="res://art/enemy_sprites/boss/frosting_temp.png"
+dest_files=["res://.godot/imported/frosting_temp.png-3322b1b621fcde77b2a301699834e634.ctex"]
 
 [params]
 

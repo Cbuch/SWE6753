@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx4f04l4tcerl"
-path="res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"
+uid="uid://c6rudu0yo2as5"
+path="res://.godot/imported/dnut4.png-bda020824c12618b2b325c175e2ac945.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerSprite.png"
-dest_files=["res://.godot/imported/PlayerSprite.png-bd57a6901c3b194287958842e514cb37.ctex"]
+source_file="res://art/enemy_sprites/boss/dnut4.png"
+dest_files=["res://.godot/imported/dnut4.png-bda020824c12618b2b325c175e2ac945.ctex"]
 
 [params]
 
