@@ -1,24 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5fxtertahga6"]
+[gd_scene load_steps=5 format=3 uid="uid://b5fxtertahga6"]
 
 [ext_resource type="Texture2D" uid="uid://dy0qrwnsulp0l" path="res://art/enemy_sprites/boss/frosting_temp.png" id="1_0clql"]
 [ext_resource type="Script" path="res://scripts/frosting_projectile.gd" id="1_7u53b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yapcn"]
-radius = 95.0
-height = 550.0
+radius = 78.0
+height = 516.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wwc8"]
+size = Vector2(163, 519)
 
 [node name="Boss_Frosting" type="CharacterBody2D" groups=["mobs"]]
-collision_layer = 16
+collision_layer = 18
 script = ExtResource("1_7u53b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["mobs"]]
 shape = SubResource("CapsuleShape2D_yapcn")
 
 [node name="Area2D" type="Area2D" parent="." groups=["mobs"]]
-collision_layer = 2
+collision_layer = 18
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["mobs"]]
-shape = SubResource("CapsuleShape2D_yapcn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_7wwc8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
