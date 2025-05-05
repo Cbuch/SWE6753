@@ -20,9 +20,6 @@ func duration_start():
 
 func _on_weapon_duration_timeout() -> void:
 	visible = false
-<<<<<<< HEAD
 	set_deferred("monitoring", false)
-=======
 	get_node("Area2D").set_deferred("monitorable", false)
->>>>>>> 097248b532665735325d0327d2b6669c8fe5a362
 	return
