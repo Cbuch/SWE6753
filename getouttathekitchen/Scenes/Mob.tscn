@@ -265,8 +265,8 @@ crumb = ExtResource("2_4qpe1")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_6v40e")
-animation = &"carb2"
-frame_progress = 0.625549
+animation = &"dairy2"
+frame_progress = 0.650023
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -276,11 +276,11 @@ shape = SubResource("CircleShape2D_dahcf")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Collision Detector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision Detector"]
-visible = false
 position = Vector2(0, -1.5)
 shape = SubResource("CircleShape2D_w8b7f")
 

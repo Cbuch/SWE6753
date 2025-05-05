@@ -30,7 +30,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$Player/Camera2D/Time.text = str($matchtimer.time_left).pad_decimals(2)
-	#if Input.is_action_pressed("special"):
+	
+	if Input.is_action_pressed("pause"):
+		$PauseMenu.visible = true
+		get_tree().paused=true
+		
 		#load_new()
 
 func _on_mobtimer_timeout() -> void:
