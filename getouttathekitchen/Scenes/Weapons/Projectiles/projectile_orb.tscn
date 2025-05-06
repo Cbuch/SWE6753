@@ -1,18 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://cajlx6agsvvm2"]
+[gd_scene load_steps=9 format=3 uid="uid://bogs3y18huip8"]
 
 [ext_resource type="Script" path="res://scripts/Weapons/Projectiles/projectile_orb.gd" id="1_kb16s"]
-[ext_resource type="Texture2D" uid="uid://bvdyeh0e5xdu4" path="res://art/weapons/EnergyOrb.png" id="1_vomhj"]
+[ext_resource type="Texture2D" uid="uid://bvdyeh0e5xdu4" path="res://art/weapons/EnergyOrb.png" id="2_e8ytd"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_34k02"]
-size = Vector2(23, 23)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uuoic"]
+radius = 37.1429
 
-[sub_resource type="Animation" id="Animation_ks2u5"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_42e7f"]
+resource_name = "Knife_disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.35, 0.35), Vector2(0, 0)]
+}
 
-[sub_resource type="Animation" id="Animation_34720"]
-resource_name = "tender_spin"
-length = 0.5
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_ayc4p"]
+resource_name = "Knife_flip_down"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,10 +32,10 @@ tracks/0/path = NodePath("Area2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 3.14159, 6.28319]
+"values": [0.0, -3.14159]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,40 +44,79 @@ tracks/1/path = NodePath("Sprite2D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 3.14159, 6.28319]
+"values": [0.0, -3.14159]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yba5q"]
+[sub_resource type="Animation" id="Animation_dtyk7"]
+resource_name = "Knife_flip_up"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.14159, -6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-3.14159, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_1rdc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x8bec"]
 _data = {
-"RESET": SubResource("Animation_ks2u5"),
-"orb_spin": SubResource("Animation_34720")
+"Knife_disappear": SubResource("Animation_42e7f"),
+"Knife_flip_down": SubResource("Animation_ayc4p"),
+"Knife_flip_up": SubResource("Animation_dtyk7"),
+"RESET": SubResource("Animation_1rdc3")
 }
 
 [node name="projectile_orb" type="Node2D"]
+scale = Vector2(0.35, 0.35)
 script = ExtResource("1_kb16s")
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
-rotation = 2.92664
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_uuoic")
 position = Vector2(-1.02179e-06, 4.25747e-07)
-shape = SubResource("RectangleShape2D_34k02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 2.92664
-texture = ExtResource("1_vomhj")
+texture = ExtResource("2_e8ytd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yba5q")
+"": SubResource("AnimationLibrary_x8bec")
 }
-
-[node name="weaponDuration" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="weaponDuration" to="." method="_on_weapon_duration_timeout"]
