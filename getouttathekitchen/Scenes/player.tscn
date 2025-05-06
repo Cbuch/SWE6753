@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cooxepxr1yigu"]
+[gd_scene load_steps=10 format=3 uid="uid://cooxepxr1yigu"]
 
 [ext_resource type="Texture2D" uid="uid://dqhg7bakub8nx" path="res://art/Player/PlayerSprite.png" id="1_5nd0v"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cbhve"]
-[ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/Weapons/weapon_knife.tscn" id="3_3ll3d"]
 [ext_resource type="Texture2D" uid="uid://c76yx5bx5iye5" path="res://art/bank.png" id="3_h1ccr"]
 [ext_resource type="Texture2D" uid="uid://bvy8rmtvw61l6" path="res://art/Player/charspriteleft.png" id="3_x3wgy"]
 [ext_resource type="Texture2D" uid="uid://dvn5dtsfiuqe5" path="res://art/Player/charspriteright.png" id="4_3smsa"]
@@ -105,7 +104,7 @@ _stat_player_damage = 50.0
 _stat_player_duration = 20.0
 _stat_player_pierce = -500.0
 _stat_player_speed = 1.0
-_current_weapons = [NodePath("Weapon/Weapon_Knife")]
+_current_weapons = [NodePath("")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6t5aa")
@@ -141,12 +140,6 @@ show_percentage = false
 
 [node name="boostWait" type="Timer" parent="."]
 one_shot = true
-
-[node name="Weapon" type="Node2D" parent="."]
-rotation = 1.5708
-
-[node name="Weapon_Knife" parent="Weapon" instance=ExtResource("3_3ll3d")]
-rotation = 0.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

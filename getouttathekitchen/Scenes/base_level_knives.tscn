@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_egtc2"]
 [ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_xk5q8"]
-[ext_resource type="PackedScene" uid="uid://c533egnayoqvr" path="res://Scenes/Boss.tscn" id="3_14j5s"]
 [ext_resource type="PackedScene" uid="uid://4r6588hwirk0" path="res://Scenes/level1.tscn" id="3_j6e5a"]
 [ext_resource type="PackedScene" uid="uid://iobyva41yp6k" path="res://Scenes/level2.tscn" id="4_r3l1d"]
 [ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://Scenes/player.tscn" id="4_sn6ou"]
@@ -10,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://h00xbwo3eeac" path="res://Scenes/level3.tscn" id="5_pphog"]
 [ext_resource type="PackedScene" uid="uid://c3lo36jqagcul" path="res://Scenes/card.tscn" id="7_ohhvk"]
 [ext_resource type="Script" path="res://Scenes/node_2d.gd" id="9_l2211"]
+[ext_resource type="PackedScene" uid="uid://pdnmpfuhbo1i" path="res://Scenes/Weapons/weapon_knife.tscn" id="9_oh0mk"]
 
 [sub_resource type="Curve2D" id="Curve2D_6444e"]
 _data = {
@@ -27,7 +27,6 @@ size = Vector2(15.384, 36.4575)
 process_mode = 1
 script = ExtResource("1_egtc2")
 mob_scene = ExtResource("2_xk5q8")
-boss_scene = ExtResource("3_14j5s")
 lv1 = ExtResource("3_j6e5a")
 lv2 = ExtResource("4_r3l1d")
 lv3 = ExtResource("5_pphog")
@@ -38,11 +37,12 @@ mob_cap = 50
 [node name="mobtimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[node name="Player" parent="." instance=ExtResource("4_sn6ou")]
+[node name="Player" parent="." node_paths=PackedStringArray("_current_weapons") instance=ExtResource("4_sn6ou")]
 top_level = true
 position = Vector2(2760, 1327)
 collision_mask = 1
 platform_floor_layers = 4294901760
+_current_weapons = [NodePath("Weapons/Weapon_Knife")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_speed = 10.0
@@ -166,11 +166,18 @@ position = Vector2(2816, 1216)
 [node name="CardLoc4" type="Marker2D" parent="Player/winscreen"]
 position = Vector2(2816, 1408)
 
+[node name="Weapons" type="Node2D" parent="Player"]
+rotation = 1.5708
+
+[node name="Weapon_Knife" parent="Player/Weapons" node_paths=PackedStringArray("projectile_list") instance=ExtResource("9_oh0mk")]
+rotation = 0.0
+projectile_list = [null]
+
 [node name="InitialSpawn" type="Marker2D" parent="."]
 position = Vector2(2760, 1328)
 
 [node name="matchtimer" type="Timer" parent="."]
-wait_time = 90.0
+wait_time = 3.0
 one_shot = true
 
 [node name="padding" type="Timer" parent="."]

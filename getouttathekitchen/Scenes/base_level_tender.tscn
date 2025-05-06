@@ -1,0 +1,198 @@
+[gd_scene load_steps=15 format=3 uid="uid://cr83brjmt03md"]
+
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_1y0qb"]
+[ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_j2h7y"]
+[ext_resource type="PackedScene" uid="uid://4r6588hwirk0" path="res://Scenes/level1.tscn" id="3_5bx74"]
+[ext_resource type="PackedScene" uid="uid://iobyva41yp6k" path="res://Scenes/level2.tscn" id="4_olqcc"]
+[ext_resource type="PackedScene" uid="uid://h00xbwo3eeac" path="res://Scenes/level3.tscn" id="5_47bve"]
+[ext_resource type="PackedScene" uid="uid://dlm6ai4hxfjj2" path="res://Scenes/level4.tscn" id="6_2e5lj"]
+[ext_resource type="PackedScene" uid="uid://c3lo36jqagcul" path="res://Scenes/card.tscn" id="7_y7d5m"]
+[ext_resource type="PackedScene" uid="uid://cooxepxr1yigu" path="res://Scenes/player.tscn" id="8_kawvu"]
+[ext_resource type="Script" path="res://Scenes/node_2d.gd" id="9_1xukl"]
+[ext_resource type="PackedScene" uid="uid://qj2nd7tqqmax" path="res://Scenes/Weapons/weapon_tender.tscn" id="9_bdn71"]
+[ext_resource type="PackedScene" uid="uid://ctd8ortrxwjdx" path="res://Menus/MenuScenes/PauseMenu.tscn" id="10_52las"]
+
+[sub_resource type="Curve2D" id="Curve2D_6444e"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -706, -448, 0, 0, 0, 0, 720, -459, 0, 0, 0, 0, 735, 420, 0, 0, 0, 0, -741, 430, 0, 0, 0, 0, -704, -443, 0, 0, 0, 0, -706, -448)
+}
+point_count = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w80bt"]
+radius = 3.16202
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chwpn"]
+size = Vector2(15.384, 36.4575)
+
+[node name="Node 2D" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_1y0qb")
+mob_scene = ExtResource("2_j2h7y")
+lv1 = ExtResource("3_5bx74")
+lv2 = ExtResource("4_olqcc")
+lv3 = ExtResource("5_47bve")
+lv4 = ExtResource("6_2e5lj")
+card = ExtResource("7_y7d5m")
+mob_cap = 50
+
+[node name="mobtimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Player" parent="." node_paths=PackedStringArray("_current_weapons") instance=ExtResource("8_kawvu")]
+top_level = true
+position = Vector2(2760, 1327)
+collision_mask = 1
+platform_floor_layers = 4294901760
+_current_weapons = [NodePath("Weapons/Weapon_Tender")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_speed = 10.0
+
+[node name="carb" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(1, 0.52549, 0, 1)
+offset_left = -616.0
+offset_top = -343.0
+offset_right = -240.0
+offset_bottom = -335.0
+show_percentage = false
+
+[node name="veg" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(0, 0.470588, 0, 1)
+offset_left = -616.0
+offset_top = -335.0
+offset_right = -240.0
+offset_bottom = -327.0
+show_percentage = false
+
+[node name="fruit" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(0.290196, 0.168627, 1, 1)
+offset_left = -616.0
+offset_top = -327.0
+offset_right = -240.0
+offset_bottom = -319.0
+show_percentage = false
+
+[node name="meat" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(0.643137, 0, 0, 1)
+offset_left = -616.0
+offset_top = -319.0
+offset_right = -240.0
+offset_bottom = -311.0
+show_percentage = false
+
+[node name="sugar" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(1, 0, 1, 1)
+offset_left = -616.0
+offset_top = -311.0
+offset_right = -240.0
+offset_bottom = -303.0
+show_percentage = false
+
+[node name="dairy" type="ProgressBar" parent="Player/Camera2D"]
+modulate = Color(0.0313726, 0.537255, 1, 1)
+offset_left = -616.0
+offset_top = -303.0
+offset_right = -240.0
+offset_bottom = -295.0
+show_percentage = false
+
+[node name="Time Remaining" type="Label" parent="Player/Camera2D"]
+offset_left = 288.0
+offset_top = -343.0
+offset_right = 424.0
+offset_bottom = -311.0
+text = "Time Remaining:"
+
+[node name="Time" type="Label" parent="Player/Camera2D"]
+offset_left = 424.0
+offset_top = -343.0
+offset_right = 576.0
+offset_bottom = -312.0
+
+[node name="MobPath" type="Path2D" parent="Player"]
+curve = SubResource("Curve2D_6444e")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="Player/MobPath"]
+position = Vector2(-706, -448)
+rotation = -0.00771373
+
+[node name="Area2D" type="Area2D" parent="Player/MobPath/MobSpawnLocation"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/MobPath/MobSpawnLocation/Area2D"]
+shape = SubResource("CircleShape2D_w80bt")
+
+[node name="areadetector" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/areadetector"]
+position = Vector2(-0.5, 2.40168)
+scale = Vector2(2.27509, 0.680337)
+shape = SubResource("RectangleShape2D_chwpn")
+
+[node name="winscreen" type="Control" parent="Player"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2760.0
+offset_top = -1327.0
+offset_right = -2720.0
+offset_bottom = -1287.0
+
+[node name="ColorRect" type="ColorRect" parent="Player/winscreen"]
+layout_mode = 0
+offset_left = 2120.0
+offset_top = 960.0
+offset_right = 3408.0
+offset_bottom = 1688.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Player/winscreen/ColorRect"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 120.0
+offset_right = 947.0
+offset_bottom = 143.0
+text = "Congratulations! You beat the level. Select an upgrade from the options below. "
+
+[node name="CardLoc1" type="Marker2D" parent="Player/winscreen"]
+position = Vector2(2304, 1216)
+
+[node name="CardLoc2" type="Marker2D" parent="Player/winscreen"]
+position = Vector2(2304, 1408)
+
+[node name="CardLoc3" type="Marker2D" parent="Player/winscreen"]
+position = Vector2(2816, 1216)
+
+[node name="CardLoc4" type="Marker2D" parent="Player/winscreen"]
+position = Vector2(2816, 1408)
+
+[node name="Weapons" type="Node2D" parent="Player"]
+rotation = 1.5708
+
+[node name="Weapon_Tender" parent="Player/Weapons" instance=ExtResource("9_bdn71")]
+
+[node name="InitialSpawn" type="Marker2D" parent="."]
+position = Vector2(2760, 1328)
+
+[node name="matchtimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="padding" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="Node2D" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("9_1xukl")
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_52las")]
+visible = false
+
+[connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="body_entered" from="Player/MobPath/MobSpawnLocation/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Player/areadetector" to="." method="_on_areadetector_area_entered"]
+[connection signal="timeout" from="matchtimer" to="." method="_on_matchtimer_timeout"]
+[connection signal="timeout" from="padding" to="." method="_on_padding_timeout"]
