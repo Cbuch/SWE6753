@@ -1,12 +1,12 @@
 extends Node2D
 
 @export var mob_scene: PackedScene
+@export var boss_scene: PackedScene
 @export var lv1 : PackedScene
 @export var lv2 : PackedScene
 @export var lv3 : PackedScene
 @export var lv4 : PackedScene
 @export var card : PackedScene
-
 
 @export var mob_cap: int = 0
 
@@ -28,13 +28,11 @@ func _ready() -> void:
 	load_new()
 	#$mobtimer.start()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Player/Camera2D/Time.text = str($matchtimer.time_left).pad_decimals(2)
-	
-	if Input.is_action_pressed("pause"):
-		$PauseMenu.visible = true
-		get_tree().paused=true
-		
+	#if(lvArray.size() == 0):
+		#$Player/Camera2D.global_position = $InitialSpawn.global_position
+	#if Input.is_action_pressed("special"):
 		#load_new()
 
 func _on_mobtimer_timeout() -> void:
@@ -88,8 +86,8 @@ func lowerMobCount():
 func load_new():
 	if lvArray.size() > 0:
 		add_child(lvArray[0].instantiate())
-	else:
-		get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+	#else:
+		#get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
 	lvArray.pop_front()
 	$Player.position = $InitialSpawn.global_position
 	$padding.start()
@@ -148,14 +146,14 @@ func maxVal():
 func _on_matchtimer_timeout() -> void:
 	$mobtimer.stop()
 	$matchtimer.stop()
-	if lvArray.size() == 0:
-		get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+	#if lvArray.size() == 0:
+		#get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
 	for i in $Player/winscreen.get_children():
 		if i.is_in_group("cards"):
 			i.queue_free()
 	for i in get_children():
-		if i.is_in_group('mobs') or i.is_in_group('Level'):
-			i.queue_free()
+		if i.is_in_group('mobs') or (i.is_in_group('Level') and lvArray.size() != 0):
+				i.queue_free()
 	$Player/winscreen.visible = true
 	cardLoader()
 
@@ -180,6 +178,7 @@ func cardLoader():
 	$Player/winscreen.add_child(card4)
 
 func startNewLevel():
+	var boss = null
 	$Player.health = $Player/HealthBar.max_value
 	for i in $Player/winscreen.get_children():
 		if i.is_in_group("cards"):
@@ -188,11 +187,20 @@ func startNewLevel():
 	if lvArray.size() > 0:
 		add_child(lvArray[0].instantiate())
 	else:
-		get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+		#make boss spawn
+		boss = boss_scene.instantiate()
+		boss.position = Vector2(3100,600)
+		add_child(boss)
+		$matchtimer.stop()
+		$Player/Camera2D.zoom = Vector2(.8,.8)
+		$padding.start(10000000000000)
+		#get_tree().change_scene_to_file("res://Menus/MenuScenes/MainMenu.tscn")
+		make_ui_invis()
 	$Player/winscreen.visible = false
 	lvArray.pop_front()
 	$Player.position = $InitialSpawn.global_position
 	$padding.start()
+	
 
 
 func _on_padding_timeout() -> void:
@@ -205,3 +213,13 @@ func _on_area_2d_body_entered(body: StaticBody2D) -> void:
 	print (body.get_groups())
 	if (body.is_in_group("oob")):
 		wait = true
+
+func make_ui_invis() -> void:
+	$Player/Camera2D/carb.visible = false
+	$Player/Camera2D/veg.visible = false
+	$Player/Camera2D/fruit.visible = false
+	$Player/Camera2D/meat.visible = false
+	$Player/Camera2D/sugar.visible = false
+	$Player/Camera2D/dairy.visible = false
+	$Player/Camera2D/Time.visible = false
+	$"Player/Camera2D/Time Remaining".visible = false

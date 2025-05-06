@@ -172,7 +172,8 @@ position = Vector2(2816, 1408)
 rotation = 1.5708
 script = ExtResource("9_cqmhh")
 
-[node name="Weapon_orb" parent="Player/Weapons" instance=ExtResource("10_bbxnm")]
+[node name="Weapon_orb" parent="Player/Weapons" node_paths=PackedStringArray("projectile_list") instance=ExtResource("10_bbxnm")]
+projectile_list = [null]
 
 [node name="InitialSpawn" type="Marker2D" parent="."]
 position = Vector2(2760, 1328)

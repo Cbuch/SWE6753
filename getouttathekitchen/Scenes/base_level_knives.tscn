@@ -169,8 +169,9 @@ position = Vector2(2816, 1408)
 [node name="Weapons" type="Node2D" parent="Player"]
 rotation = 1.5708
 
-[node name="Weapon_Knife" parent="Player/Weapons" instance=ExtResource("9_oh0mk")]
+[node name="Weapon_Knife" parent="Player/Weapons" node_paths=PackedStringArray("projectile_list") instance=ExtResource("9_oh0mk")]
 rotation = 0.0
+projectile_list = [null]
 
 [node name="InitialSpawn" type="Marker2D" parent="."]
 position = Vector2(2760, 1328)
