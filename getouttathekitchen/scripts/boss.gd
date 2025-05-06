@@ -46,13 +46,13 @@ func healthbar_setup():
 	$HealthBar.max_value = health
 	
 func health_update():
-	#change donut?
+	#change donut
 	var dnut = 0
 	$HealthBar.value=health
 	if health <= 0:
 		die()
 	else: if health <= $HealthBar.max_value * .2:
-		print_debug("Here we are")
+		#print_debug("Here we are")
 		$"Collision Detector/DonutCollider".shape.radius = 130
 		$"WizCollider".shape.radius = 130
 		$AnimationPlayer.speed_scale = 2.6
@@ -92,6 +92,7 @@ func _on_attack_timer_timeout() -> void:
 	
 	for i in attack_areas.size():
 		Frostings[i].position = attack_points[attack_areas[i]]
+		Frostings[i].hold_x = Frostings[i].position.x
 		frosting_on()
 	$AttackTimer.start(7)
 

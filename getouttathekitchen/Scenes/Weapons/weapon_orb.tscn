@@ -11,10 +11,6 @@ size = Vector2(2538, 1458)
 script = ExtResource("1_pu1uw")
 projectile_list = [NodePath("projectile_orb")]
 
-[node name="weaponCD" type="Timer" parent="."]
-wait_time = 4.0
-one_shot = true
-
 [node name="EnemyTracker" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -25,6 +21,8 @@ shape = SubResource("RectangleShape2D_qfh8p")
 
 [node name="projectile_orb" parent="." instance=ExtResource("3_ulh5g")]
 
-[connection signal="timeout" from="weaponCD" to="." method="_on_weapon_cd_timeout"]
+[node name="weaponCD" type="Timer" parent="."]
+
 [connection signal="body_entered" from="EnemyTracker" to="EnemyTracker" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyTracker" to="EnemyTracker" method="_on_body_exited"]
+[connection signal="timeout" from="weaponCD" to="." method="_on_weapon_cd_timeout"]

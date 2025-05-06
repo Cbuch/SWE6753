@@ -40,7 +40,7 @@ func die():
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
-		health = health - area.get_parent().weapondamage
+		health = health - area.get_parent().damage
 		health_update()
 		if health <= 0:
 			die()

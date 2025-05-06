@@ -31,7 +31,7 @@ func fire_next_tender():
 	tender.distance = 0
 	tender.visible = true
 	tender.set_deferred("monitoring", true)
-	tender.set_deferred("monitorable", true)
+	tender.get_node("Area2D").set_deferred("monitorable", true)
 
 
 	tenders_fired += 1
