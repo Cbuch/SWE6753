@@ -7,7 +7,7 @@
 rotation = 1.5708
 script = ExtResource("1_rw5q8")
 _base_cd = 5
-projectile_list = [null]
+projectile_list = [NodePath("projectile_tender")]
 
 [node name="weaponCD" type="Timer" parent="."]
 wait_time = 4.0

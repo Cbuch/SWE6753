@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://c533egnayoqvr"]
+[gd_scene load_steps=16 format=3 uid="uid://b8eq8xideed34"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_ki37a"]
-[ext_resource type="PackedScene" uid="uid://bmoaeuth30pgw" path="res://Scenes/youwin.tscn" id="2_4rqr3"]
 [ext_resource type="Texture2D" uid="uid://cwgj2ey2hk68v" path="res://art/enemy_sprites/boss/Wizard.png" id="2_8gysm"]
 [ext_resource type="Texture2D" uid="uid://cwv55fettvrgi" path="res://art/enemy_sprites/boss/Donut.png" id="3_r2i6w"]
 [ext_resource type="Texture2D" uid="uid://g658kfiknsy0" path="res://art/enemy_sprites/boss/dnut1.png" id="4_cs7ff"]
@@ -116,8 +115,6 @@ position = Vector2(614, 327)
 collision_layer = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_ki37a")
-health = 100000
-end_scene = ExtResource("2_4rqr3")
 Frostings = [NodePath("Frosting holder/Boss_Frosting"), NodePath("Frosting holder/Boss_Frosting2"), NodePath("Frosting holder/Boss_Frosting3"), NodePath("Frosting holder/Boss_Frosting4")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

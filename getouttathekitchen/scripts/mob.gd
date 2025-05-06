@@ -25,7 +25,7 @@ func _ready():
 		$AnimatedSprite2D.animation = mob_types.pick_random()
 	$AnimatedSprite2D.play()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	health_update()
 	navigation_agent.target_position = target.global_position
 	velocity = global_position.direction_to(navigation_agent.get_next_path_position())
@@ -40,7 +40,7 @@ func die():
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
-		health = health - area.get_parent().damage
+		health = health - area.get_parent().weapondamage
 		health_update()
 		if health <= 0:
 			die()

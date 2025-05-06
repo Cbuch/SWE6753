@@ -1,13 +1,14 @@
 extends CharacterBody2D
+@export var target: CharacterBody2D
 @export var health = 1000
-@export var end_scene: PackedScene
-var perma_pos
+
+var typing = "blank"
+
 var damage = 25
 var isAttacking =  false
 var attack_points: Array[Vector2] = []
 @export var Frostings: Array[Node2D] = []
 func _ready():
-	perma_pos = position
 	healthbar_setup()
 	attack_points_setup()
 	$AnimationPlayer.play("donut_Spin")
@@ -19,20 +20,24 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("move_down"):
 		health = health - 100
 	health_update()
-	position = perma_pos
+
 	move_and_slide()
 
 func die():
 	#maybe some animation or something
 	#add a winning thing?
-	get_tree().change_scene_to_file("res://Scenes/youwin.tscn")
-	#queue_free()
-	pass
+	queue_free()
 
 func _on_collision_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
 		health = health - area.get_parent().damage
 		health_update()
+
+
+func animtype(input: StringName):
+	print(input)
+	typing = input
+	$AnimatedSprite2D.set_animation(input)
 
 func healthbar_setup():
 	$HealthBar.max_value = health
@@ -46,7 +51,6 @@ func health_update():
 	else: if health <= $HealthBar.max_value * .2:
 		print_debug("Here we are")
 		$"Collision Detector/DonutCollider".shape.radius = 130
-		$"WizCollider".shape.radius = 130
 		$AnimationPlayer.speed_scale = 2.6
 		dnut = 4
 	else: if health <= $HealthBar.max_value * .4:
@@ -67,7 +71,6 @@ func sprite_check(sprite_num: int) -> void:
 
 func default_dnut() -> int:
 	$AnimationPlayer.speed_scale = 1
-	$"WizCollider".shape.radius = 250
 	$"Collision Detector/DonutCollider".shape.radius = 250
 	return 0
 
@@ -84,9 +87,8 @@ func _on_attack_timer_timeout() -> void:
 	
 	for i in attack_areas.size():
 		Frostings[i].position = attack_points[attack_areas[i]]
-		Frostings[i].x_hold = Frostings[i].position.x
 		frosting_on()
-	$AttackTimer.start(4)
+	$AttackTimer.start(7)
 
 func attack_points_setup() -> void:
 	#1280 wide
