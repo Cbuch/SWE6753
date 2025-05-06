@@ -24,12 +24,14 @@ var weapon_stats: Array[float] = [1,1,1,1,1,1.1]
 
 @export var projectile_list: Array[ProjectileBase] = []
 
+@onready var weapon_cd_timer: Timer = $weaponCD
+
 func _ready() -> void:
 	weapon_stats = [_stat_weapon_amount, _stat_weapon_cd,_stat_weapon_damage, _stat_weapon_duration, _stat_weapon_pierce, _stat_weapon_size, _stat_weapon_speed]
 	adjust_stats()
 	#all weapons should have a timer attached to them to make their attacks work if cd > 0
 	if (_stat_weapon_cd > 0):
-		$weaponCD.start(_base_cd * (1/adjusted_stats[1]))
+		weapon_cd_timer.start(_base_cd * (1/adjusted_stats[1]))
 	
 	for i in range (projectile_list.size()):
 		var wep = projectile_list[i]

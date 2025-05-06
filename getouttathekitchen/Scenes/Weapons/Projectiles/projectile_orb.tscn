@@ -110,8 +110,8 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_uuoic")
 position = Vector2(-1.02179e-06, 4.25747e-07)
+shape = SubResource("CircleShape2D_uuoic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_e8ytd")

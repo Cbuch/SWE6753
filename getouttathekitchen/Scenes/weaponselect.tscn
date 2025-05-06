@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7vpjudawwxwx"]
+[gd_scene load_steps=6 format=3 uid="uid://dxogm6f83yup3"]
 
 [ext_resource type="Texture2D" uid="uid://dp6wd3220bj6m" path="res://art/weaponchoice.png" id="1_6ngwt"]
 [ext_resource type="Script" path="res://Scenes/weaponselect.gd" id="1_kubxp"]

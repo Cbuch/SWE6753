@@ -1,7 +1,6 @@
 extends WeaponBase
 
 #@onready var clover_path: Path2D = $CloverPath
-@onready var weapon_cd_timer: Timer = $weaponCD
 
 const LAUNCH_INTERVAL := 0.26
 var total_projectiles := 0

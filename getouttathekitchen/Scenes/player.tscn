@@ -104,7 +104,7 @@ _stat_player_damage = 50.0
 _stat_player_duration = 20.0
 _stat_player_pierce = -500.0
 _stat_player_speed = 1.0
-_current_weapons = [NodePath("")]
+_current_weapons = [null]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6t5aa")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr83brjmt03md"]
+[gd_scene load_steps=16 format=3 uid="uid://b2ssnt44lyr5n"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_1y0qb"]
 [ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_j2h7y"]
+[ext_resource type="PackedScene" uid="uid://c533egnayoqvr" path="res://Scenes/Boss.tscn" id="3_1tbqb"]
 [ext_resource type="PackedScene" uid="uid://4r6588hwirk0" path="res://Scenes/level1.tscn" id="3_5bx74"]
 [ext_resource type="PackedScene" uid="uid://iobyva41yp6k" path="res://Scenes/level2.tscn" id="4_olqcc"]
 [ext_resource type="PackedScene" uid="uid://h00xbwo3eeac" path="res://Scenes/level3.tscn" id="5_47bve"]
@@ -28,6 +29,7 @@ size = Vector2(15.384, 36.4575)
 process_mode = 1
 script = ExtResource("1_1y0qb")
 mob_scene = ExtResource("2_j2h7y")
+boss_scene = ExtResource("3_1tbqb")
 lv1 = ExtResource("3_5bx74")
 lv2 = ExtResource("4_olqcc")
 lv3 = ExtResource("5_47bve")

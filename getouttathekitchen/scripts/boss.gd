@@ -8,22 +8,25 @@ var damage = 25
 var isAttacking =  false
 var attack_points: Array[Vector2] = []
 @export var Frostings: Array[Node2D] = []
+var perma_pos
 func _ready():
 	healthbar_setup()
 	attack_points_setup()
 	$AnimationPlayer.play("donut_Spin")
 	frosting_off()
 	default_dnut()
+	perma_pos = position
 	$AttackTimer.start(3)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("move_down"):
 		health = health - 100
 	health_update()
-
+	position = perma_pos
 	move_and_slide()
 
 func die():
+	get_tree().change_scene_to_file("res://Scenes/youwin.tscn")
 	#maybe some animation or something
 	#add a winning thing?
 	queue_free()
@@ -51,6 +54,7 @@ func health_update():
 	else: if health <= $HealthBar.max_value * .2:
 		print_debug("Here we are")
 		$"Collision Detector/DonutCollider".shape.radius = 130
+		$"WizCollider".shape.radius = 130
 		$AnimationPlayer.speed_scale = 2.6
 		dnut = 4
 	else: if health <= $HealthBar.max_value * .4:
@@ -72,6 +76,7 @@ func sprite_check(sprite_num: int) -> void:
 func default_dnut() -> int:
 	$AnimationPlayer.speed_scale = 1
 	$"Collision Detector/DonutCollider".shape.radius = 250
+	$"WizCollider".shape.radius = 250
 	return 0
 
 func _on_attack_timer_timeout() -> void:

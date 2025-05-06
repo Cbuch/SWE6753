@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8eq8xideed34"]
+[gd_scene load_steps=16 format=3 uid="uid://c533egnayoqvr"]
 
 [ext_resource type="Script" path="res://scripts/boss.gd" id="1_ki37a"]
 [ext_resource type="Texture2D" uid="uid://cwgj2ey2hk68v" path="res://art/enemy_sprites/boss/Wizard.png" id="2_8gysm"]
@@ -115,6 +115,7 @@ position = Vector2(614, 327)
 collision_layer = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_ki37a")
+health = 100000
 Frostings = [NodePath("Frosting holder/Boss_Frosting"), NodePath("Frosting holder/Boss_Frosting2"), NodePath("Frosting holder/Boss_Frosting3"), NodePath("Frosting holder/Boss_Frosting4")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

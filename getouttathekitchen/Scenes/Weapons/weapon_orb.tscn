@@ -13,6 +13,7 @@ projectile_list = [NodePath("projectile_orb")]
 
 [node name="weaponCD" type="Timer" parent="."]
 wait_time = 4.0
+one_shot = true
 
 [node name="EnemyTracker" type="Area2D" parent="."]
 collision_layer = 0

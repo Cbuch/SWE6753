@@ -11,7 +11,7 @@ func _ready() -> void:
 	clover_curve = $WeaponCurve  # fallback in case it's not assigned
 
 func _process(delta: float) -> void:
-	distance += speed * .002
+	distance += speed * .000002
 	$WeaponCurve/CurveFollow.progress_ratio = distance
 	position = $WeaponCurve/CurveFollow.position
 

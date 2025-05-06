@@ -52,13 +52,12 @@ clover_curve = NodePath("WeaponCurve")
 
 [node name="Area2D" type="Area2D" parent="." groups=["projectile"]]
 collision_layer = 8
-collision_mask = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_34k02")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
 texture = ExtResource("2_tfs32")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc5ba2n6tqh7f"]
+[gd_scene load_steps=17 format=3 uid="uid://bjbo5mfw71sor"]
 
 [ext_resource type="Script" path="res://scripts/level_1.gd" id="1_am7jf"]
 [ext_resource type="PackedScene" uid="uid://csvaqup5wtyww" path="res://Scenes/Mob.tscn" id="2_u3a7i"]
+[ext_resource type="PackedScene" uid="uid://c533egnayoqvr" path="res://Scenes/Boss.tscn" id="3_pb1da"]
 [ext_resource type="PackedScene" uid="uid://4r6588hwirk0" path="res://Scenes/level1.tscn" id="3_r68s7"]
 [ext_resource type="PackedScene" uid="uid://iobyva41yp6k" path="res://Scenes/level2.tscn" id="4_uipvj"]
 [ext_resource type="PackedScene" uid="uid://h00xbwo3eeac" path="res://Scenes/level3.tscn" id="5_rpo2c"]
@@ -29,6 +30,7 @@ size = Vector2(15.384, 36.4575)
 process_mode = 1
 script = ExtResource("1_am7jf")
 mob_scene = ExtResource("2_u3a7i")
+boss_scene = ExtResource("3_pb1da")
 lv1 = ExtResource("3_r68s7")
 lv2 = ExtResource("4_uipvj")
 lv3 = ExtResource("5_rpo2c")
@@ -172,8 +174,7 @@ position = Vector2(2816, 1408)
 rotation = 1.5708
 script = ExtResource("9_cqmhh")
 
-[node name="Weapon_orb" parent="Player/Weapons" node_paths=PackedStringArray("projectile_list") instance=ExtResource("10_bbxnm")]
-projectile_list = [null]
+[node name="Weapon_orb" parent="Player/Weapons" instance=ExtResource("10_bbxnm")]
 
 [node name="InitialSpawn" type="Marker2D" parent="."]
 position = Vector2(2760, 1328)
