@@ -131,6 +131,11 @@ position = Vector2(-0.5, 2.40168)
 scale = Vector2(2.27509, 0.680337)
 shape = SubResource("RectangleShape2D_chwpn")
 
+[node name="Weapons" type="Node2D" parent="Player"]
+rotation = 1.5708
+
+[node name="Weapon_Knife" parent="Player/Weapons" instance=ExtResource("9_oh0mk")]
+
 [node name="winscreen" type="Control" parent="Player"]
 visible = false
 layout_mode = 3
@@ -168,16 +173,11 @@ position = Vector2(2816, 1216)
 [node name="CardLoc4" type="Marker2D" parent="Player/winscreen"]
 position = Vector2(2816, 1408)
 
-[node name="Weapons" type="Node2D" parent="Player"]
-rotation = 1.5708
-
-[node name="Weapon_Knife" parent="Player/Weapons" instance=ExtResource("9_oh0mk")]
-
 [node name="InitialSpawn" type="Marker2D" parent="."]
 position = Vector2(2760, 1328)
 
 [node name="matchtimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 90.0
 one_shot = true
 
 [node name="padding" type="Timer" parent="."]

@@ -1,6 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://4r6588hwirk0"]
+[gd_scene load_steps=21 format=4 uid="uid://4r6588hwirk0"]
 
 [ext_resource type="Texture2D" uid="uid://bf367mw31nh4i" path="res://art/tilesets/tileset_lv1.png" id="1_4f70t"]
+[ext_resource type="Script" path="res://Scenes/level_1.gd" id="1_kosbl"]
+[ext_resource type="AudioStream" uid="uid://cfx67joadwtj" path="res://music/Zane Little - Take.mp3" id="2_m7dxm"]
+[ext_resource type="Script" path="res://scripts/musicplayer.gd" id="4_ubvca"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hn12h"]
 texture = ExtResource("1_4f70t")
@@ -151,6 +154,7 @@ size = Vector2(141.892, 125.552)
 size = Vector2(127.515, 233.166)
 
 [node name="Level1" type="Node2D" groups=["Level"]]
+script = ExtResource("1_kosbl")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -405,3 +409,8 @@ scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_wrinw")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_m7dxm")
+autoplay = true
+script = ExtResource("4_ubvca")

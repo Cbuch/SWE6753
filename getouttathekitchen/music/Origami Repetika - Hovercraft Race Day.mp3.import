@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfhfo0n1n8n1r"
+path="res://.godot/imported/Origami Repetika - Hovercraft Race Day.mp3-687b5e4c5c15bfa000e9bfa85370b88b.mp3str"
+
+[deps]
+
+source_file="res://music/Origami Repetika - Hovercraft Race Day.mp3"
+dest_files=["res://.godot/imported/Origami Repetika - Hovercraft Race Day.mp3-687b5e4c5c15bfa000e9bfa85370b88b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

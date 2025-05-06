@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://iobyva41yp6k"]
+[gd_scene load_steps=15 format=4 uid="uid://iobyva41yp6k"]
 
 [ext_resource type="Texture2D" uid="uid://bdqtt8fvkirbx" path="res://art/tilesets/tileset_lv2.png" id="1_hag7b"]
+[ext_resource type="AudioStream" uid="uid://dlrx1bvu1nl56" path="res://music/legacyAlli - Funny Stuff - RF.mp3" id="2_sbg8d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_txptm"]
 texture = ExtResource("1_hag7b")
@@ -416,7 +417,7 @@ scale = Vector2(0.998145, 1.00136)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/smoothiecup2/StaticBody2D"]
 polygon = PackedVector2Array(-119.221, -96.8684, -35.0649, -149.796, 26.0483, -168.771, 90.1675, -144.803, 120.223, -115.843, 153.285, -58.92, 170.316, -27.9622, 168.313, 9.98633, 157.292, 68.9061, 83.1543, 123.831, 10.019, 151.793, -79.1465, 154.789, -147.273, 114.844, -174.323, 54.9252, -154.286, -44.939)
 
-[node name="OuterWall1" type="Node2D" parent="NavigationRegion2D/Walls"]
+[node name="OuterWall1" type="Node2D" parent="NavigationRegion2D/Walls" groups=["oob"]]
 position = Vector2(4400.89, 135.133)
 rotation = -3.09
 scale = Vector2(0.998145, 1.00136)
@@ -426,7 +427,7 @@ scale = Vector2(0.998145, 1.00136)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NavigationRegion2D/Walls/OuterWall1/StaticBody2D" groups=["oob"]]
 polygon = PackedVector2Array(-3369.25, -428.417, 2659.94, -424.423, 2651.92, 1415.08, -3350.21, 1415.08, -3289.1, 2855.12, 3574.63, 2882.08, 3700.87, -1252.3, -3469.43, -1387.11)
 
-[node name="OuterWall2" type="Node2D" parent="NavigationRegion2D/Walls"]
+[node name="OuterWall2" type="Node2D" parent="NavigationRegion2D/Walls" groups=["oob"]]
 position = Vector2(4400.89, 135.133)
 rotation = -3.09
 scale = Vector2(0.998145, 1.00136)
@@ -496,5 +497,8 @@ collision_mask = 0
 position = Vector2(657, 1649)
 scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_04ylm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sbg8d")
 
 [connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]

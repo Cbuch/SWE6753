@@ -1,21 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dny7qd6qnymlc"]
+[gd_scene load_steps=6 format=3 uid="uid://dny7qd6qnymlc"]
 
 [ext_resource type="Script" path="res://Menus/MenuScripts/settings_menu.gd" id="1_1b6bd"]
 [ext_resource type="Texture2D" uid="uid://vnsyn536tw2k" path="res://Menus/MenuBackgrounds/SettingsMenu.PNG" id="1_cnueu"]
 [ext_resource type="FontFile" uid="uid://bahs2isam48vq" path="res://fonts/CormorantGaramond-VariableFont_wght.ttf" id="2_5q0cg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xstcd"]
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkw4k"]
-bg_color = Color(0.203922, 0.227451, 0.192157, 0.784314)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dadi"]
 corner_radius_top_left = 16
@@ -68,22 +55,6 @@ offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-min_value = -30.0
-max_value = 0.0
-
-[node name="Adjust Display Resolution" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="Reset Progress" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_5q0cg")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = SubResource("StyleBoxFlat_xstcd")
-theme_override_styles/normal = SubResource("StyleBoxFlat_xkw4k")
-text = "~Reset Progress~"
-
 [node name="Goback" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_5q0cg")
@@ -92,5 +63,24 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_0dadi")
 theme_override_styles/normal = SubResource("StyleBoxFlat_y3yv3")
 text = "~Go Back~"
 
-[connection signal="value_changed" from="VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 271.0
+offset_right = 666.0
+offset_bottom = 294.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "VOLUME"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 307.0
+offset_right = 730.0
+offset_bottom = 323.0
+max_value = 1.0
+step = 0.05
+
 [connection signal="pressed" from="VBoxContainer/Goback" to="." method="_on_go_back_pressed"]
+[connection signal="changed" from="HSlider" to="." method="_on_h_slider_changed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

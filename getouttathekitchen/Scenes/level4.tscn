@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dlm6ai4hxfjj2"]
+[gd_scene load_steps=15 format=4 uid="uid://dlm6ai4hxfjj2"]
 
 [ext_resource type="Texture2D" uid="uid://bt02a18a2pmix" path="res://art/tilesets/tileset_lv4.png" id="1_wjiqo"]
+[ext_resource type="AudioStream" uid="uid://dkqq5xiv3e2oc" path="res://music/Origami Repetika - Frantic Remedy.mp3" id="2_jg0yj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4ab5"]
 texture = ExtResource("1_wjiqo")
@@ -314,5 +315,9 @@ collision_mask = 0
 position = Vector2(740, 1276)
 scale = Vector2(11.1046, 4.82061)
 shape = SubResource("RectangleShape2D_wrinw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jg0yj")
+autoplay = true
 
 [connection signal="timeout" from="mobtimer" to="." method="_on_mobtimer_timeout"]
